@@ -1,68 +1,70 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full Screen Fade Slider</title>
+  <meta charset="UTF-8">
+  <title>Scroll Fade-Up Effect</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      background: #000;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background: #fff;
     }
 
-    .slider {
-      position: relative;
-      width: 1920px;
-      height: 1080px;
-      margin: 0 auto;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #000;
+    section {
+      padding: 100px 50px;
+      min-height: 100vh;
+      border-bottom: 1px solid #ddd;
+      background-color: #f9f9f9;
+      box-sizing: border-box;
     }
 
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1920px;
-      height: 1080px;
+    .fade-up-section {
       opacity: 0;
-      transition: opacity 2s ease-in-out;
-      background-size: cover;
-      background-position: center;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
     }
 
-    .active {
+    .fade-up-section.visible {
       opacity: 1;
+      transform: translateY(0);
     }
-
-    .slide1 { background: #ff6b6b; }  /* 또는 background-image: url('...'); */
-    .slide2 { background: #4ecdc4; }
-    .slide3 { background: #ffe66d; }
   </style>
 </head>
 <body>
+  <section class="fade-up-section">
+    <h2>Our Business</h2>
+    <h1>Together with people.</h1>
+    <p>
+      Hanchang's zeolite molecular sieves are the key material of VPSA oxygen generators,
+      essential for industries like steel, smelting, glass, and medical fields,
+      as well as LiBr absorbents.
+    </p>
+  </section>
 
-  <div class="slider">
-    <div class="slide slide1 active"></div>
-    <div class="slide slide2"></div>
-    <div class="slide slide3"></div>
-  </div>
+  <section class="fade-up-section">
+    <h2>Our Business</h2>
+    <h1>Protecting the world.</h1>
+    <p>
+      If a structure exposed to rain and wind is easily rusted, it risks corrosion and pollution.
+      Hanchang's anti-corrosion pigments prevent this, protecting the world and preserving the environment.
+    </p>
+  </section>
 
   <script>
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
+    const fadeElems = document.querySelectorAll('.fade-up-section');
 
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 4000); // 4초 간격: 2초 페이드 + 2초 유지
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    fadeElems.forEach(elem => observer.observe(elem));
   </script>
-
 </body>
 </html>
