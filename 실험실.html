@@ -1,32 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .box {
-            width: 100px;
-            height: 100px;
-            background: #000;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Screen Fade Slider</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
 
-        .wrapper {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-    </style>
+    .slider {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      margin: 0 auto;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #000;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 1080px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .active {
+      opacity: 1;
+    }
+
+    .slide1 { background: #ff6b6b; }  /* 또는 background-image: url('...'); */
+    .slide2 { background: #4ecdc4; }
+    .slide3 { background: #ffe66d; }
+  </style>
 </head>
-
 <body>
-    <div class="wrapper">
-        <div class="box">
-            <img src="./image/Frame 7.svg" alt="">
-        </div>
-        <div class="box"></div>
-    </div>
-</body>
 
+  <div class="slider">
+    <div class="slide slide1 active"></div>
+    <div class="slide slide2"></div>
+    <div class="slide slide3"></div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000); // 4초 간격: 2초 페이드 + 2초 유지
+  </script>
+
+</body>
 </html>
