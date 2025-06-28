@@ -179,34 +179,29 @@ header {
 /* recommend_container */
 .campaign_container.donate > figure {
     background: url(../image/campaign_1.svg);
-    width: 960px;
-    height: 953px;
+    width: 45%;
+    height: 80%;
+    background-size: cover;
+
 }
 
 .campaign_container.resource > figure {
     background: url(../image/campaign_2.svg);
-    width: 960px;
-    height: 953px;
+    width: 45%;
+    height: 80%;
+    background-size: cover;
 }
 
 .campaign_container {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #000;
     color: #fff;
-    height: 100vh;
     gap: 60px;
-
-}
-
-.campaign_text_content.donate {
-    width: 50%;
-    padding-right: 60px;
-}
-
-.campaign_text_content.resource {
-    width: 50%;
-    padding-left: 60px;
+    padding: 0 60px;
+    box-sizing: border-box;
+    height: 100vh;
 }
 
 .campaign_text_content.donate > h2 {
@@ -222,19 +217,40 @@ header {
 }
 
 .campaign_text_content {
-    position: relative;
-    height: 953px;
+    position: relative;    width: 50%;
 }
 
 .campaign_text_content > p:first-of-type {
     font-size: 48px;
     position: absolute;
-    top: 10%;
+    top: 20%;
+    left: 0;
+    width: 100%;
 }
 
 .campaign_text_content > p:last-of-type {
     font-size: 24px;
     position: absolute;
     bottom: 0;
+    left: 0;
+    width: 100%;
+} 
+
+/* bestseller_container */
+.bestseller_container > h2 {
+    text-align: center;
+    font-size: 64px;
+    font-weight: 900;
+    margin-top: 54px;
 }
 
+.bestseller_container > p {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 900;
+    margin: 40px;
+    color: #443f3f;
+}
+.bestseller_content {
+    display: flex;
+}
