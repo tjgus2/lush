@@ -4,7 +4,7 @@
     width: 100%;
     height: 1080px;
     color: #fff;
-    position: relative;
+    position: relative;   
 }
 
 h1 {
@@ -21,8 +21,7 @@ header {
 
 .header_menu_button {
     display: flex;
-    align-items: center;
-    padding-top: 32px;
+    margin-top: 32px;
 }
 
 .ham_container {
@@ -41,6 +40,10 @@ header {
     transition: 0.3s;
 }
 
+.hamburger.active {
+    background-color: transparent;
+}
+
 .hamburger::before,
 .hamburger::after {
     content: "";
@@ -50,6 +53,7 @@ header {
     display: block;
     position: absolute;
     left: 0;
+    transition: 0.3s;
 }
 
 .hamburger::before {
@@ -58,6 +62,18 @@ header {
 
 .hamburger::after {
     top: 10px;
+}
+
+.hamburger.active::before {
+    transform: rotate(-45deg);
+    top: 0;
+    background-color: #fff;
+}
+
+.hamburger.active::after {
+    transform: rotate(45deg);
+    top: 0;
+    background-color: #fff;
 }
 
 .header_menu_button > p {
@@ -73,19 +89,40 @@ header {
     display: none;
 }
 
+.header_menu.active {
+    display: block;
+}
+
 .header_menu > li {
     line-height: 72px;
     font-size: 40px;
     font-weight: 600;
 }
 
-.main_text_content > p{
+#main_typewriter{
     position: absolute;
     bottom: 15%;
     left: 32px;
     font-size: 56px;
     font-weight: 600;
     margin: 0 auto;
+    border-right: 2px solid #fff;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes blink {
+    0%, 100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #fff;
+    }
+
 }
 
 /* intro_full_container */
@@ -202,6 +239,14 @@ header {
     padding: 0 60px;
     box-sizing: border-box;
     height: 100vh;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease-out, transform 1s ease-out;
+}
+
+.campaign_container.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .campaign_text_content.donate > h2 {
@@ -302,7 +347,7 @@ header {
     color: #fff;
     border-radius: 50%;
     opacity: 0;
-    transition: 0.5s;
+    transition: 0.7s;
 }
 
 .bestseller_content > li:hover .bestseller_overlay {
@@ -311,7 +356,7 @@ header {
 
 .bestseller_content > li:hover > img {
     transform: scale(1.1);
-    transition: 0.5s;
+    transition: 0.7s;
 }
 
 /* footer */
