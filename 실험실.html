@@ -1,70 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Scroll Fade-Up Effect</title>
+  <title>올라오는 카드 효과</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      background: #fff;
+      background: #0C0E14;
+      font-family: 'Noto Sans KR', sans-serif;
     }
 
-    section {
-      padding: 100px 50px;
-      min-height: 100vh;
-      border-bottom: 1px solid #ddd;
-      background-color: #f9f9f9;
-      box-sizing: border-box;
+    .card-section {
+      height: 400vh;
+      position: relative;
     }
 
-    .fade-up-section {
+    .card {
+      position: sticky;
+      top: 120px;
+      margin: 0 auto;
+      width: 90%;
+      max-width: 1000px;
+      height: 80vh;
+      padding: 60px;
+      color: white;
+      border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 1s ease, opacity 1s ease;
       opacity: 0;
-      transform: translateY(40px);
-      transition: 1s ease-out, transform 1s ease-out;
+      transform: translateY(100px) scale(0.98);
     }
 
-    .fade-up-section.visible {
+    .card.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
+
+    .card:not(:first-child) {
+      width: 100%;
+    height: 1080px;
+    background-color: #000;
+    color: #fff;
+    padding: 36px 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 1s ease, opacity 1s ease;
+    opacity: 0;
+    transform: translateY(100px) scale(0.98);
+    }
+
+    .card h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+      max-width: 600px;
+    }
+
+    .card-1 { background: #5a6d84; z-index: 1; }
+    .card-2 { background: #41A1F6; z-index: 2; }
+    .card-3 { background: #474BFC; z-index: 3; }
+    .card-4 { background: #f97316; z-index: 4; }
   </style>
 </head>
 <body>
-  <section class="fade-up-section">
-    <h2>Our Business</h2>
-    <h1>Together with people.</h1>
-    <p>
-      Hanchang's zeolite molecular sieves are the key material of VPSA oxygen generators,
-      essential for industries like steel, smelting, glass, and medical fields,
-      as well as LiBr absorbents.
-    </p>
-  </section>
 
-  <section class="fade-up-section">
-    <h2>Our Business</h2>
-    <h1>Protecting the world.</h1>
-    <p>
-      If a structure exposed to rain and wind is easily rusted, it risks corrosion and pollution.
-      Hanchang's anti-corrosion pigments prevent this, protecting the world and preserving the environment.
-    </p>
-  </section>
+  <div class="card-section">
+    <div class="card card-1">
+      <h1>360도 자유자재 회전</h1>
+      <p>모델링된 제품을 다양한 각도에서 자유롭게 회전시켜 확인해보세요.</p>
+    </div>
+    <div class="card card-2">
+      <h1>취향대로 커스터마이징</h1>
+      <p>고객 요구에 맞춰 색상, 구성, 옵션 등을 자유롭게 설정할 수 있어요.</p>
+    </div>
+    <div class="card card-3">
+      <h1>소프트코딩으로 유연하게</h1>
+      <p>밝기, 조명, 분위기 등 다양한 요소를 상황에 맞게 부드럽게 조정 가능해요.</p>
+    </div>
+    <div class="card card-4">
+      <h1>자유로운 전환 효과</h1>
+      <p>스크롤 시 매끄럽게 전환되는 연출로 시각적 몰입도를 높입니다.</p>
+    </div>
+  </div>
 
   <script>
-    const fadeElems = document.querySelectorAll('.fade-up-section');
+    const cards = document.querySelectorAll('.card');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    function checkCardsInView() {
+      const triggerBottom = window.innerHeight * 0.8;
+
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+          card.classList.add('show');
         }
       });
-    }, {
-      threshold: 0.2
-    });
+    }
 
-    fadeElems.forEach(elem => observer.observe(elem));
+    window.addEventListener('scroll', checkCardsInView);
+    window.addEventListener('load', checkCardsInView);
   </script>
+
 </body>
 </html>
