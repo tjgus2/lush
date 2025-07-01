@@ -169,6 +169,19 @@ header {
     gap: 200px;
 }
 
+.intro_text_content.margin_right {
+    margin-right: 120px;
+}
+
+.intro_text_content.margin_left {
+    margin-left: 120px;
+}
+
+.margin_left {
+    margin-left: 100px;
+    margin-top: 32px;
+}
+
 .intro_text_content > h3 {
     font-size: 32px;
     font-weight: 600;
@@ -243,7 +256,7 @@ header {
 
 .tab-btn {
     background: none;
-    border: 1px solid #AEADAD;
+    border: 2px solid #AEADAD;
     font-size: 22px;
     border-radius: 16px;
     padding: 12px;
@@ -322,8 +335,6 @@ header {
 .tab-content.dirty > h3 {
     color: #016B73;
 }
-
-
 
 .recommend_content {
     display: flex;
@@ -412,12 +423,17 @@ header {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 24px;
+    display: inline-block;
+}
+
+.recommend_text_content > h2:last-of-type {
+    display: block;
 }
 
 .recommend_text_content > h2:first-child:after {
     content: "";
     background-color: #000;
-    width: 80%;
+    width: 100%;
     height: 1px;
     display: block;
     margin-top: 24px;
@@ -474,35 +490,43 @@ header {
     transform: translateY(0);
 }
 
-.campaign_text_content.donate > h2 {
+.campaign_top.donate > h2 {
     color: #0DBFE7;
     font-size: 32px;
     font-weight: 900;
+    margin-bottom: 32px;
 }
 
-.campaign_text_content.resource > h2 {
+.campaign_top.resource > h2 {
     color: #28C400;
     font-size: 32px;
     font-weight: 900;
+    margin-bottom: 32px;
 }
 
 .campaign_text_content {
     position: relative;
     width: 50%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.campaign_text_content > p:first-of-type {
+.campaign_top > p {
     font-size: 48px;
+    font-weight: 500;
     top: 20%;
     left: 0;
     width: 100%;
 }
 
-.campaign_text_content > p:last-of-type {
+.campaign_text_content > p {
     font-size: 24px;
     bottom: 0;
     left: 0;
     width: 100%;
+    line-height: 36px;
 } 
 
 /* bestseller_container */
@@ -545,7 +569,7 @@ header {
 
 .bestseller_content {
     display: flex;
-    gap: 16px;
+    gap: 32px;
 }
 
 .bestseller_content > li {
