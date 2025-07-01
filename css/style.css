@@ -2,33 +2,23 @@
 .main_container {
     background: url(../image/main_1.svg);
     width: 100%;
-    height: 1080px;
-    color: #fff;
-    position: relative;   
-}
-
-h1 {
-    position: absolute;
-    top: 32px;
-    left: 32px;
+    height: 100vh;
+    color: #fff;  
 }
 
 header {
+    padding: 32px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    width: 50%;
+    justify-content: space-between;
 }
 
 .header_menu_button {
     display: flex;
-    margin-top: 32px;
 }
 
 .ham_container {
-    position: absolute;
-    top: 32px;
-    left: 44%;
-    z-index: 999;
     padding: 16px 0;
 }
 
@@ -79,6 +69,7 @@ header {
 .header_menu_button > p {
     font-size: 28px;
     font-weight: 900;
+    margin-left: 16px;
 }
 
 .header_menu {
@@ -167,6 +158,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 24px;
 }
 
 .intro_text_content {
@@ -232,12 +224,227 @@ header {
 }
 
 /* recommend_container */
+.recommend_container {
+    height: 100vh;
+    padding: 36px 100px;
+}
+
+.recommend_container > h2 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 36px;
+}
+
+.tabs {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.tab-btn {
+    background: none;
+    border: 1px solid #AEADAD;
+    font-size: 22px;
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.tab-btn[data-tab="rose"].active {
+    background-color: #ff5c8a;
+    border: none;
+    color: #fff;
+}
+
+.tab-btn[data-tab="sleepy"].active {
+    background-color: #6C4C82;
+    border: none;
+    color: #fff;
+}
+
+.tab-btn[data-tab="honey"].active {
+    background-color: #C59358;
+    border: none;
+    color: #fff;
+}
+
+.tab-btn[data-tab="olive"].active {
+    background-color: #E04415;
+    border: none;
+    color: #fff;
+}
+
+.tab-btn[data-tab="inter"].active {
+    background-color: #038FAF;
+    border: none;
+    color: #fff;
+}
+
+.tab-btn[data-tab="dirty"].active {
+    background-color: #016B73;
+    border: none;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content > h3 {
+    margin-bottom: 60px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.tab-content.rose > h3 {
+    color: #ff5c8a;
+}
+
+.tab-content.sleepy > h3 {
+    color: #6C4C82;
+}
+
+.tab-content.honey > h3 {
+    color: #C59358;
+}
+
+.tab-content.olive > h3 {
+    color: #E04415;
+}
+
+.tab-content.inter > h3 {
+    color: #038FAF;
+}
+
+.tab-content.dirty > h3 {
+    color: #016B73;
+}
+
+
+
+.recommend_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.rose_1 {
+    background: url(../image/로즈잼1.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.rose_2 {
+    background: url(../image/로즈잼2.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.sleepy_1 {
+    background: url(../image/슬리피1.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.sleepy_2 {
+    background: url(../image/슬리피2.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.honey_1 {
+    background: url(../image/허니1.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.honey_2 {
+    background: url(../image/허니2.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.olive_1 {
+    background: url(../image/올리브1.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.olive_2 {
+    background: url(../image/올리브2.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.inter_1 {
+    background: url(../image/인터1.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.inter_2 {
+    background: url(../image/인터2.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.dirty_1 {
+    background: url(../image/더티1.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.dirty_2 {
+    background: url(../image/더티2.svg);
+    width: 295px;
+    height: 295px;
+}
+
+.recommend_text_content {
+    width: 755px;
+}
+
+.recommend_text_content > h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.recommend_text_content > h2:first-child:after {
+    content: "";
+    background-color: #000;
+    width: 80%;
+    height: 1px;
+    display: block;
+    margin-top: 24px;
+}
+
+.recommend_text_content > p {
+    color: #AEADAD;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.recommend_text_content > button {
+    background-color: #AEADAD;
+    border: none;
+    padding: 12px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 16px;
+}
+
+/* campaign_container */
 .campaign_container.donate > figure {
     background: url(../image/campaign_1.svg);
     width: 45%;
     height: 80%;
     background-size: cover;
-
 }
 
 .campaign_container.resource > figure {
@@ -280,12 +487,12 @@ header {
 }
 
 .campaign_text_content {
-    position: relative;    width: 50%;
+    position: relative;
+    width: 50%;
 }
 
 .campaign_text_content > p:first-of-type {
     font-size: 48px;
-    position: absolute;
     top: 20%;
     left: 0;
     width: 100%;
@@ -293,7 +500,6 @@ header {
 
 .campaign_text_content > p:last-of-type {
     font-size: 24px;
-    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;

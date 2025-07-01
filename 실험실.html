@@ -1,113 +1,225 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>올라오는 카드 효과</title>
+  <meta charset="UTF-8" />
+  <title>향기별 제품 추천</title>
   <style>
     body {
-      margin: 0;
-      background: #0C0E14;
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: sans-serif;
+      padding: 40px;
+      background: #f8f8f8;
     }
 
-    .card-section {
-      height: 400vh;
-      position: relative;
-    }
-
-    .card {
-      position: sticky;
-      top: 120px;
-      margin: 0 auto;
-      width: 90%;
-      max-width: 1000px;
-      height: 80vh;
-      padding: 60px;
-      color: white;
-      border-radius: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transition: transform 1s ease, opacity 1s ease;
-      opacity: 0;
-      transform: translateY(100px) scale(0.98);
-    }
-
-    .card.show {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .card:not(:first-child) {
-      width: 100%;
-    height: 1080px;
-    background-color: #000;
-    color: #fff;
-    padding: 36px 100px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: transform 1s ease, opacity 1s ease;
-    opacity: 0;
-    transform: translateY(100px) scale(0.98);
-    }
-
-    .card h1 {
-      font-size: 2.5rem;
+    h2 {
+      font-size: 24px;
       margin-bottom: 20px;
     }
 
-    .card p {
-      font-size: 1.2rem;
-      line-height: 1.8rem;
-      max-width: 600px;
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
     }
 
-    .card-1 { background: #5a6d84; z-index: 1; }
-    .card-2 { background: #41A1F6; z-index: 2; }
-    .card-3 { background: #474BFC; z-index: 3; }
-    .card-4 { background: #f97316; z-index: 4; }
+    .t.tab-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #eee;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab-btn.active {
+  background-color: #ff5c8a; /* 기본적인 활성화 색상 */
+  color: white;
+  font-weight: bold;
+}
+
+/* 각 탭 버튼의 active 상태에 맞게 스타일 추가 */
+.tab-btn[data-tab="rose"].active {
+  background-color: #ff5c8a;
+}
+
+.tab-btn[data-tab="sleepy"].active {
+  background-color: #9b6ea2; /* 예시: 슬리피 탭의 색상 */
+}
+
+.tab-btn[data-tab="honey"].active {
+  background-color: #f6c54f; /* 예시: 허니 탭의 색상 */
+}
+
+.tab-btn[data-tab="olive"].active {
+  background-color: #84a400; /* 예시: 올리브 탭의 색상 */
+}
+
+.tab-btn[data-tab="inter"].active {
+  background-color: #2f92a4; /* 예시: 인터갈락틱 탭의 색상 */
+}
+
+.tab-btn[data-tab="dirty"].active {
+  background-color: #7d7d7d; /* 예시: 더티 탭의 색상 */
+}
+
+
+    .tab-content {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .product {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      gap: 20px;
+    }
+
+    .product img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .product-info {
+      text-align: left;
+    }
+
+    .product-info h4 {
+      margin: 5px 0;
+    }
+
+    .product-info p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .buy-btn {
+      padding: 10px 16px;
+      background: #ccc;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
+  <h2>향기별 제품 추천</h2>
 
-  <div class="card-section">
-    <div class="card card-1">
-      <h1>360도 자유자재 회전</h1>
-      <p>모델링된 제품을 다양한 각도에서 자유롭게 회전시켜 확인해보세요.</p>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="rose">Rose Jam</button>
+    <button class="tab-btn" data-tab="sleepy">Sleepy</button>
+    <button class="tab-btn" data-tab="honey">Honey I Washed the Kids</button>
+    <button class="tab-btn" data-tab="olive">The Olive Branch</button>
+    <button class="tab-btn" data-tab="inter">Intergalactic</button>
+    <button class="tab-btn" data-tab="dirty">Dirty</button>
+  </div>
+
+  <div id="rose" class="tab-content active">
+    <div class="product">
+      <img src="https://via.placeholder.com/120?text=비버블" alt="비버블">
+      <div class="product-info">
+        <h4>로즈 잼 비버블 100g - 버블바 / 입욕제</h4>
+        <p>달콤한 장미향의 리치한 로즈잼 향</p>
+        <strong>17,000원</strong><br>
+        <button class="buy-btn">구매하러 가기</button>
+      </div>
     </div>
-    <div class="card card-2">
-      <h1>취향대로 커스터마이징</h1>
-      <p>고객 요구에 맞춰 색상, 구성, 옵션 등을 자유롭게 설정할 수 있어요.</p>
+    <div class="product">
+      <img src="https://via.placeholder.com/120?text=샤워젤" alt="샤워젤">
+      <div class="product-info">
+        <h4>로즈 잼 100g - 샤워젤 / 바디워시</h4>
+        <p>기분 좋은 향기가 퍼지며 달콤한 샤워 타임</p>
+        <strong>20,000원</strong><br>
+        <button class="buy-btn">구매하러 가기</button>
+      </div>
     </div>
-    <div class="card card-3">
-      <h1>소프트코딩으로 유연하게</h1>
-      <p>밝기, 조명, 분위기 등 다양한 요소를 상황에 맞게 부드럽게 조정 가능해요.</p>
+  </div>
+
+  <div id="sleepy" class="tab-content">
+    <div class="product">
+      <img src="https://via.placeholder.com/120?text=슬리피" alt="슬리피">
+      <div class="product-info">
+        <h4>슬리피 보디로션 100g</h4>
+        <p>편안한 라벤더 향으로 밤을 준비하세요</p>
+        <strong>18,000원</strong><br>
+        <button class="buy-btn">구매하러 가기</button>
+      </div>
     </div>
-    <div class="card card-4">
-      <h1>자유로운 전환 효과</h1>
-      <p>스크롤 시 매끄럽게 전환되는 연출로 시각적 몰입도를 높입니다.</p>
+  </div>
+
+  <div id="honey" class="tab-content">
+    <div class="product">
+      <img src="https://via.placeholder.com/120?text=허니키즈" alt="허니키즈">
+      <div class="product-info">
+        <h4>허니 키즈 샤워젤 100g</h4>
+        <p>달콤한 꿀과 오렌지 향으로 활기찬 아침!</p>
+        <strong>19,000원</strong><br>
+        <button class="buy-btn">구매하러 가기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="olive" class="tab-content">
+    <div class="product">
+      <img src="https://via.placeholder.com/120?text=올리브" alt="올리브">
+      <div class="product-info">
+        <h4>더 올리브 브랜치 샤워젤</h4>
+        <p>지중해 감성을 담은 부드러운 향</p>
+        <strong>21,000원</strong><br>
+        <button class="buy-btn">구매하러 가기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="inter" class="tab-content">
+    <div class="product">
+      <img src="https://via.placeholder.com/120?text=배쓰밤" alt="배쓰밤">
+      <div class="product-info">
+        <h4>인터갤럭틱 배쓰밤</h4>
+        <p>우주를 담은 듯한 반짝이는 입욕제</p>
+        <strong>16,000원</strong><br>
+        <button class="buy-btn">구매하러 가기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dirty" class="tab-content">
+    <div class="product">
+      <img src="https://via.placeholder.com/120?text=더티" alt="더티">
+      <div class="product-info">
+        <h4>더티 보디 스프레이</h4>
+        <p>멘톨 향으로 상쾌한 하루를!</p>
+        <strong>25,000원</strong><br>
+        <button class="buy-btn">구매하러 가기</button>
+      </div>
     </div>
   </div>
 
   <script>
-    const cards = document.querySelectorAll('.card');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-    function checkCardsInView() {
-      const triggerBottom = window.innerHeight * 0.8;
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // 모든 버튼, 콘텐츠 초기화
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
 
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < triggerBottom) {
-          card.classList.add('show');
-        }
+        // 현재 선택된 것만 표시
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
       });
-    }
-
-    window.addEventListener('scroll', checkCardsInView);
-    window.addEventListener('load', checkCardsInView);
+    });
   </script>
-
 </body>
 </html>
