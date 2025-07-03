@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <div class="slider">
+        <div class="slide slide1 active"></div>
+        <div class="slide slide2"></div>
+        <div class="slide slide3"></div>
+    </div>
+
     <section class="main_container">
         <header>
             <h1>
@@ -22,13 +28,15 @@
                 <p>menu</p>
             </div>
         </header>
-        <ul class="header_menu">
-            <li>Hair</li>
-            <li>Face</li>
-            <li>Hand</li>
-            <li>Body</li>
-            <li>location</li>
-        </ul>
+        <div class="wrapper">
+            <ul class="header_menu">
+                <li>Hair</li>
+                <li>Face</li>
+                <li>Hand</li>
+                <li>Body</li>
+                <li>location</li>
+            </ul>
+        </div>
         <div class="main_text_content">
             <p id="main_typewriter"></p>
         </div>
@@ -383,6 +391,7 @@
             <p>이용약관</p>
         </div>
     </footer>
+    <script src="./js/fadeinMain.js"></script>
     <script src="./js/typewriter.js"></script>
     <script src="./js/menuOpen.js"></script>
     <script src="./js/fadeupScroll.js"></script>

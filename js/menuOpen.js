@@ -1,6 +1,6 @@
 const hamburger = document.querySelector(".hamburger");
 const hamContainer = document.querySelector(".header_menu_button");
-const headerMenu = document.querySelector(".header_menu");
+const headerMenu = document.querySelector(".wrapper");
 
 const mainTypewriter = document.querySelector("#main_typewriter");
 

@@ -1,225 +1,278 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>향기별 제품 추천</title>
+  <meta charset="UTF-8">
+  <title>LUSH Homepage</title>
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 40px;
-      background: #f8f8f8;
+    /* intro_full_container */
+    .intro_full_container {
+      height: 400vh;
+      position: relative;
     }
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .tabs {
+    /* intro_container */
+    .intro_container {
+      background-color: #000;
+      /* position: sticky; */
+      /* top: 16px; */
+      width: 100%;
+      height: 100vh;
+      color: white;
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
+      flex-direction: column;
+      justify-content: center;
+      /* transition: transform 1s ease, opacity 1s ease; */
+      /* opacity: 0; */
+      /* transform: translateY(100px) scale(0.98); */
+      padding: 36px 100px;
+      box-sizing: border-box;
+      /* position: relative; */
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
-    .t.tab-btn {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 20px;
-  background-color: #eee;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.tab-btn.active {
-  background-color: #ff5c8a; /* 기본적인 활성화 색상 */
-  color: white;
-  font-weight: bold;
-}
-
-/* 각 탭 버튼의 active 상태에 맞게 스타일 추가 */
-.tab-btn[data-tab="rose"].active {
-  background-color: #ff5c8a;
-}
-
-.tab-btn[data-tab="sleepy"].active {
-  background-color: #9b6ea2; /* 예시: 슬리피 탭의 색상 */
-}
-
-.tab-btn[data-tab="honey"].active {
-  background-color: #f6c54f; /* 예시: 허니 탭의 색상 */
-}
-
-.tab-btn[data-tab="olive"].active {
-  background-color: #84a400; /* 예시: 올리브 탭의 색상 */
-}
-
-.tab-btn[data-tab="inter"].active {
-  background-color: #2f92a4; /* 예시: 인터갈락틱 탭의 색상 */
-}
-
-.tab-btn[data-tab="dirty"].active {
-  background-color: #7d7d7d; /* 예시: 더티 탭의 색상 */
-}
-
-
-    .tab-content {
-      display: none;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .intro_content {
+      transition: transform 1s ease, opacity 1s ease;
+      opacity: 0;
+      transform: translateY(100px);
     }
 
-    .tab-content.active {
-      display: block;
+    .intro_content.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .product {
+    .intro_container.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .intro_container>h2 {
+      font-size: 48px;
+      font-weight: 900;
+      margin-left: 86px;
+    }
+
+    /* .intro_content {
+      width: 100%;
+      height: 80%;
+      margin: 24px auto 0 auto;
       display: flex;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 30px;
-      gap: 20px;
+      border-radius: 24px;
+      position: sticky;
+      transition: transform 1s ease, opacity 1s ease;
+      opacity: 0;
+      transform: translateY(100px) scale(0.98);
+    } */
+
+    .intro_content.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
-    .product img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 12px;
+
+    .intro_text_content {
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 200px;
     }
 
-    .product-info {
-      text-align: left;
+    .intro_text_content.margin_right {
+      margin-right: 120px;
     }
 
-    .product-info h4 {
-      margin: 5px 0;
+    .intro_text_content.margin_left {
+      margin-left: 120px;
     }
 
-    .product-info p {
-      margin: 5px 0;
-      color: #555;
+    .margin_left {
+      margin-left: 100px;
+      margin-top: 32px;
     }
 
-    .buy-btn {
-      padding: 10px 16px;
-      background: #ccc;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      margin-top: 10px;
+    .intro_text_content>h3 {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 36px;
+    }
+
+    .intro_text_content>p {
+      line-height: 20px;
+    }
+
+    /* blue */
+    .intro_container.blue>.intro_content {
+      background-color: #0022FF;
+    }
+
+    .intro_container.blue>.intro_content>figure {
+      background: url(../image/intro_1.svg);
+      width: 800px;
+      height: 700px;
+    }
+
+    /* yellow */
+    .intro_container.yellow>.intro_content {
+      background-color: #EACD76;
+    }
+
+    .intro_container.yellow>.intro_content>figure {
+      background: url(../image/intro_2.svg);
+      width: 800px;
+      height: 700px;
+    }
+
+    /* sky */
+    .intro_container.sky>.intro_content {
+      background-color: #0DBFE7;
+    }
+
+    .intro_container.sky>.intro_content>figure {
+      background: url(../image/intro_3.svg);
+      width: 800px;
+      height: 700px;
+    }
+
+    /* red */
+    .intro_container.red>.intro_content {
+      background-color: #B51420;
+    }
+
+    .intro_container.red>.intro_content>figure {
+      background: url(../image/intro_4.svg);
+      width: 800px;
+      height: 700px;
     }
   </style>
 </head>
+
 <body>
-  <h2>향기별 제품 추천</h2>
-
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="rose">Rose Jam</button>
-    <button class="tab-btn" data-tab="sleepy">Sleepy</button>
-    <button class="tab-btn" data-tab="honey">Honey I Washed the Kids</button>
-    <button class="tab-btn" data-tab="olive">The Olive Branch</button>
-    <button class="tab-btn" data-tab="inter">Intergalactic</button>
-    <button class="tab-btn" data-tab="dirty">Dirty</button>
-  </div>
-
-  <div id="rose" class="tab-content active">
-    <div class="product">
-      <img src="https://via.placeholder.com/120?text=비버블" alt="비버블">
-      <div class="product-info">
-        <h4>로즈 잼 비버블 100g - 버블바 / 입욕제</h4>
-        <p>달콤한 장미향의 리치한 로즈잼 향</p>
-        <strong>17,000원</strong><br>
-        <button class="buy-btn">구매하러 가기</button>
+  <section class="intro_full_container">
+    <div class="intro_container blue">
+      <h2>What is Lush?</h2>
+      <div class="intro_content">
+        <figure></figure>
+        <div class="intro_text_content margin_right">
+          <h3>
+            러쉬는 어떤 이유에서도
+            <br>
+            제품을 동물실험 하지 않고,
+            <br>
+            동물실험을 거친 원재료조차
+            <br>
+            사용하지 않습니다.
+          </h3>
+          <p>
+            직접 구매팀을 운영하며, 엄격한 기준을 바탕으로
+            <br>
+            윤리적인 공정 여부를 확인합니다.
+            <br>
+            믿을 수 있는 생산자로부터 직거래를 원칙으로 합니다.
+          </p>
+        </div>
       </div>
     </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/120?text=샤워젤" alt="샤워젤">
-      <div class="product-info">
-        <h4>로즈 잼 100g - 샤워젤 / 바디워시</h4>
-        <p>기분 좋은 향기가 퍼지며 달콤한 샤워 타임</p>
-        <strong>20,000원</strong><br>
-        <button class="buy-btn">구매하러 가기</button>
+    <div class="intro_container yellow">
+      <!-- <h2>What is Lush?</h2> -->
+      <div class="intro_content">
+        <div class="intro_text_content margin_left">
+          <h3>
+            러쉬는 배쓰 밤, 샤워 젤리,
+            <br>
+            고체 샴푸와 같은
+            <br>
+            기발하고 혁신적인
+            <br>
+            제품을 선보입니다.
+          </h3>
+          <p>
+            특히 불필요한 포장을 없앤 고체 형태의 다양한
+            <br>
+            '네이키드'제품을 개발하며 화장품 산업에서 혁명을
+            <br>
+            일으켜 왔습니다.
+          </p>
+        </div>
+        <figure class="margin_left"></figure>
       </div>
     </div>
-  </div>
-
-  <div id="sleepy" class="tab-content">
-    <div class="product">
-      <img src="https://via.placeholder.com/120?text=슬리피" alt="슬리피">
-      <div class="product-info">
-        <h4>슬리피 보디로션 100g</h4>
-        <p>편안한 라벤더 향으로 밤을 준비하세요</p>
-        <strong>18,000원</strong><br>
-        <button class="buy-btn">구매하러 가기</button>
+    <div class="intro_container sky">
+      <!-- <h2>What is Lush?</h2> -->
+      <div class="intro_content">
+        <figure></figure>
+        <div class="intro_text_content margin_right">
+          <h3>
+            신선함은 러쉬 철학의
+            <br>
+            핵심입니다.
+          </h3>
+          <p>
+            신선한 과일, 채소, 에센셜 오일, 최소한의 보존제와
+            <br>
+            안전한 인공 성분을 사용하여 제품을 선보입니다.
+            <br>
+            러쉬의 모든 제품은 베지테리언(Vegetarian)이며,
+            <br>
+            그 중 약 90%는 식물성 원료로만 만든 비건(Vegan)입니다.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div id="honey" class="tab-content">
-    <div class="product">
-      <img src="https://via.placeholder.com/120?text=허니키즈" alt="허니키즈">
-      <div class="product-info">
-        <h4>허니 키즈 샤워젤 100g</h4>
-        <p>달콤한 꿀과 오렌지 향으로 활기찬 아침!</p>
-        <strong>19,000원</strong><br>
-        <button class="buy-btn">구매하러 가기</button>
+    <div class="intro_container red">
+      <!-- <h2>What is Lush?</h2> -->
+      <div class="intro_content">
+        <div class="intro_text_content margin_left">
+          <h3>
+            러쉬는 어떤 이유에서도
+            <br>
+            제품을 동물실험 하지 않고,
+            <br>
+            동물실험을 거친 원재료조차
+            <br>
+            사용하지 않습니다.
+          </h3>
+          <p>
+            앞으로도 러쉬는 현시대에 필요한 제품과 서비스를
+            <br>
+            제공할 것입니다.
+            <br>
+            환경 보호를 위해 고민하고, 동물과 자연 그리고 사람이
+            <br>
+            조화로운 세상을 만들기 위한 도전과 혁신에 앞장섭니다.
+          </p>
+        </div>
+        <figure></figure>
       </div>
     </div>
-  </div>
-
-  <div id="olive" class="tab-content">
-    <div class="product">
-      <img src="https://via.placeholder.com/120?text=올리브" alt="올리브">
-      <div class="product-info">
-        <h4>더 올리브 브랜치 샤워젤</h4>
-        <p>지중해 감성을 담은 부드러운 향</p>
-        <strong>21,000원</strong><br>
-        <button class="buy-btn">구매하러 가기</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="inter" class="tab-content">
-    <div class="product">
-      <img src="https://via.placeholder.com/120?text=배쓰밤" alt="배쓰밤">
-      <div class="product-info">
-        <h4>인터갤럭틱 배쓰밤</h4>
-        <p>우주를 담은 듯한 반짝이는 입욕제</p>
-        <strong>16,000원</strong><br>
-        <button class="buy-btn">구매하러 가기</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="dirty" class="tab-content">
-    <div class="product">
-      <img src="https://via.placeholder.com/120?text=더티" alt="더티">
-      <div class="product-info">
-        <h4>더티 보디 스프레이</h4>
-        <p>멘톨 향으로 상쾌한 하루를!</p>
-        <strong>25,000원</strong><br>
-        <button class="buy-btn">구매하러 가기</button>
-      </div>
-    </div>
-  </div>
+  </section>
 
   <script>
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
+    const cards = document.querySelectorAll(".intro_content");
+    let currentIndex = 0;
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // 모든 버튼, 콘텐츠 초기화
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(c => c.classList.remove('active'));
+    function showNextCardIfInView() {
+      if (currentIndex >= cards.length) return;
 
-        // 현재 선택된 것만 표시
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
+      const card = cards[currentIndex];
+      const rect = card.getBoundingClientRect();
+      const triggerBottom = window.innerHeight * 0.8;
+
+      if (rect.top < triggerBottom) {
+        card.classList.add("show");
+        currentIndex++;
+      }
+    }
+
+    window.addEventListener("scroll", showNextCardIfInView);
+    window.addEventListener("load", showNextCardIfInView);
   </script>
+
 </body>
+
 </html>

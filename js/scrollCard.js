@@ -1,4 +1,4 @@
-const cards = document.querySelectorAll(".intro_container");
+const cards = document.querySelectorAll(".intro_content");
 
 function checkCardsInView() {
     const triggerBottom = window.innerHeight * 0.8;
