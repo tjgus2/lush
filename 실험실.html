@@ -1,277 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <title>LUSH Homepage</title>
+  <meta charset="UTF-8" />
+  <title>Scroll Test</title>
   <style>
-    /* intro_full_container */
-    .intro_full_container {
-      height: 400vh;
+    .bestseller_container {
+      margin: 64px 0;
+    }
+
+    .bestseller_container>h2 {
+      text-align: center;
+      font-size: 64px;
+      font-weight: 900;
+      margin-top: 54px;
+    }
+
+    .bestseller_container>p {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      margin: 40px;
+      color: #443f3f;
+    }
+
+    .bestseller_slider_wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .bestseller_slider {
+      animation: scroll 20s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .bestseller_content {
+      display: flex;
+      gap: 32px;
+    }
+
+    .bestseller_content>li {
       position: relative;
     }
 
-    /* intro_container */
-    .intro_container {
-      background-color: #000;
-      /* position: sticky; */
-      /* top: 16px; */
-      width: 100%;
-      height: 100vh;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      /* transition: transform 1s ease, opacity 1s ease; */
-      /* opacity: 0; */
-      /* transform: translateY(100px) scale(0.98); */
-      padding: 36px 100px;
-      box-sizing: border-box;
-      /* position: relative; */
+    .bestseller_content>li>img {
+      width: 400px;
+      height: 400px;
+    }
+
+    .bestseller_overlay {
       position: absolute;
       top: 0;
       left: 0;
-    }
-
-    .intro_content {
-      transition: transform 1s ease, opacity 1s ease;
-      opacity: 0;
-      transform: translateY(100px);
-    }
-
-    .intro_content.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .intro_container.show {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .intro_container>h2 {
-      font-size: 48px;
-      font-weight: 900;
-      margin-left: 86px;
-    }
-
-    /* .intro_content {
       width: 100%;
-      height: 80%;
-      margin: 24px auto 0 auto;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      font-size: 24px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      border-radius: 24px;
-      position: sticky;
-      transition: transform 1s ease, opacity 1s ease;
-      opacity: 0;
-      transform: translateY(100px) scale(0.98);
-    } */
-
-    .intro_content.show {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-
-    .intro_text_content {
-      height: 500px;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
-      gap: 200px;
+      color: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      transition: 0.7s;
     }
 
-    .intro_text_content.margin_right {
-      margin-right: 120px;
+    .bestseller_content>li:hover .bestseller_overlay {
+      opacity: 1;
     }
 
-    .intro_text_content.margin_left {
-      margin-left: 120px;
-    }
-
-    .margin_left {
-      margin-left: 100px;
-      margin-top: 32px;
-    }
-
-    .intro_text_content>h3 {
-      font-size: 32px;
-      font-weight: 600;
-      line-height: 36px;
-    }
-
-    .intro_text_content>p {
-      line-height: 20px;
-    }
-
-    /* blue */
-    .intro_container.blue>.intro_content {
-      background-color: #0022FF;
-    }
-
-    .intro_container.blue>.intro_content>figure {
-      background: url(../image/intro_1.svg);
-      width: 800px;
-      height: 700px;
-    }
-
-    /* yellow */
-    .intro_container.yellow>.intro_content {
-      background-color: #EACD76;
-    }
-
-    .intro_container.yellow>.intro_content>figure {
-      background: url(../image/intro_2.svg);
-      width: 800px;
-      height: 700px;
-    }
-
-    /* sky */
-    .intro_container.sky>.intro_content {
-      background-color: #0DBFE7;
-    }
-
-    .intro_container.sky>.intro_content>figure {
-      background: url(../image/intro_3.svg);
-      width: 800px;
-      height: 700px;
-    }
-
-    /* red */
-    .intro_container.red>.intro_content {
-      background-color: #B51420;
-    }
-
-    .intro_container.red>.intro_content>figure {
-      background: url(../image/intro_4.svg);
-      width: 800px;
-      height: 700px;
+    .bestseller_content>li:hover>img {
+      transform: scale(1.1);
+      transition: 0.7s;
     }
   </style>
 </head>
 
 <body>
-  <section class="intro_full_container">
-    <div class="intro_container blue">
-      <h2>What is Lush?</h2>
-      <div class="intro_content">
-        <figure></figure>
-        <div class="intro_text_content margin_right">
-          <h3>
-            러쉬는 어떤 이유에서도
-            <br>
-            제품을 동물실험 하지 않고,
-            <br>
-            동물실험을 거친 원재료조차
-            <br>
-            사용하지 않습니다.
-          </h3>
-          <p>
-            직접 구매팀을 운영하며, 엄격한 기준을 바탕으로
-            <br>
-            윤리적인 공정 여부를 확인합니다.
-            <br>
-            믿을 수 있는 생산자로부터 직거래를 원칙으로 합니다.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="intro_container yellow">
-      <!-- <h2>What is Lush?</h2> -->
-      <div class="intro_content">
-        <div class="intro_text_content margin_left">
-          <h3>
-            러쉬는 배쓰 밤, 샤워 젤리,
-            <br>
-            고체 샴푸와 같은
-            <br>
-            기발하고 혁신적인
-            <br>
-            제품을 선보입니다.
-          </h3>
-          <p>
-            특히 불필요한 포장을 없앤 고체 형태의 다양한
-            <br>
-            '네이키드'제품을 개발하며 화장품 산업에서 혁명을
-            <br>
-            일으켜 왔습니다.
-          </p>
-        </div>
-        <figure class="margin_left"></figure>
-      </div>
-    </div>
-    <div class="intro_container sky">
-      <!-- <h2>What is Lush?</h2> -->
-      <div class="intro_content">
-        <figure></figure>
-        <div class="intro_text_content margin_right">
-          <h3>
-            신선함은 러쉬 철학의
-            <br>
-            핵심입니다.
-          </h3>
-          <p>
-            신선한 과일, 채소, 에센셜 오일, 최소한의 보존제와
-            <br>
-            안전한 인공 성분을 사용하여 제품을 선보입니다.
-            <br>
-            러쉬의 모든 제품은 베지테리언(Vegetarian)이며,
-            <br>
-            그 중 약 90%는 식물성 원료로만 만든 비건(Vegan)입니다.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="intro_container red">
-      <!-- <h2>What is Lush?</h2> -->
-      <div class="intro_content">
-        <div class="intro_text_content margin_left">
-          <h3>
-            러쉬는 어떤 이유에서도
-            <br>
-            제품을 동물실험 하지 않고,
-            <br>
-            동물실험을 거친 원재료조차
-            <br>
-            사용하지 않습니다.
-          </h3>
-          <p>
-            앞으로도 러쉬는 현시대에 필요한 제품과 서비스를
-            <br>
-            제공할 것입니다.
-            <br>
-            환경 보호를 위해 고민하고, 동물과 자연 그리고 사람이
-            <br>
-            조화로운 세상을 만들기 위한 도전과 혁신에 앞장섭니다.
-          </p>
-        </div>
-        <figure></figure>
+  <section class="bestseller_container">
+    <h2>Bestseller</h2>
+    <p>We are changing the world we live in for the better.</p>
+    <div class="bestseller_slider_wrapper">
+      <div class="bestseller_slider">
+        <ul class="bestseller_content">
+          <li>
+            <img src="./image/best_1.png" alt="">
+            <div class="bestseller_overlay">
+              Dirty Springwash 샤워젤
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_2.png" alt="">
+            <div class="bestseller_overlay">
+              인터갈락틱 200g - 버블바 / 입욕제
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_3.png" alt="">
+            <div class="bestseller_overlay">
+              American Cream 헤어 컨디셔너
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_4.png" alt="">
+            <div class="bestseller_overlay">
+              마스크 오브 매그너민티
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_5.png" alt="">
+            <div class="bestseller_overlay">
+              더티 스프레이
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
-
-  <script>
-    const cards = document.querySelectorAll(".intro_content");
-    let currentIndex = 0;
-
-    function showNextCardIfInView() {
-      if (currentIndex >= cards.length) return;
-
-      const card = cards[currentIndex];
-      const rect = card.getBoundingClientRect();
-      const triggerBottom = window.innerHeight * 0.8;
-
-      if (rect.top < triggerBottom) {
-        card.classList.add("show");
-        currentIndex++;
-      }
-    }
-
-    window.addEventListener("scroll", showNextCardIfInView);
-    window.addEventListener("load", showNextCardIfInView);
-  </script>
 
 </body>
 

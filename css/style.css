@@ -34,6 +34,14 @@
     background: url(../image/main_3.svg);
 }
 
+.slide4 {
+    background: url(../image/main_4.svg);
+}
+
+.slide5 {
+    background: url(../image/main_5.svg);
+}
+
 /* main_container */
 .main_container {
     color: #fff;
@@ -105,7 +113,12 @@ header {
     background-color: #fff;
 }
 
-/* 감싸개 */
+.header_menu_button > p {
+    font-size: 28px;
+    font-weight: 900;
+    margin-left: 16px;
+}
+
 .wrapper {
     width: 100%;
     height: 100vh;
@@ -116,12 +129,9 @@ header {
     opacity: 0;
     transition: 0.5s;
 }
-/* 감싸개 */
 
-.header_menu_button > p {
-    font-size: 28px;
-    font-weight: 900;
-    margin-left: 16px;
+.wrapper.active {
+    opacity: 1;
 }
 
 .header_menu {
@@ -129,11 +139,6 @@ header {
     top: 50%;
     right: 15%;
     transform: translateY(-50%);
-    /* display: none; */
-}
-
-.wrapper.active {
-    opacity: 1;
 }
 
 .header_menu > li {
@@ -144,29 +149,22 @@ header {
 
 #main_typewriter{
     position: absolute;
-    bottom: 15%;
+    bottom: 10%;
     left: 32px;
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 600;
-    margin: 0 auto;
-    border-right: 2px solid #fff;
-    overflow: hidden;
 }
 
-.hidden {
-    display: none;
+#main_typewriter span {
+    color: #ddd;
+    transition: color 0.3s ease;
 }
 
-@keyframes blink {
-    0%, 100% {
-        border-color: transparent;
-    }
-
-    50% {
-        border-color: #fff;
-    }
-
+#main_typewriter span.active {
+    color: #fff;
 }
+
+
 
 /* intro_full_container */
 .intro_full_container {
@@ -219,6 +217,7 @@ header {
     flex-direction: column;
     justify-content: center;
     gap: 200px;
+    word-break: keep-all;
 }
 
 .intro_text_content.margin_right {
@@ -290,6 +289,7 @@ header {
 
 /* recommend_container */
 .recommend_container {
+    margin: 100px 0;
     height: 100vh;
     padding: 36px 100px;
 }
@@ -510,32 +510,35 @@ header {
 /* campaign_container */
 .campaign_container.donate > figure {
     background: url(../image/campaign_1.svg);
-    width: 45%;
-    height: 80%;
+    width: 960px;
+    height: 100vh;
+    border-radius: 50px;
     background-size: cover;
 }
 
 .campaign_container.resource > figure {
     background: url(../image/campaign_2.svg);
-    width: 45%;
-    height: 80%;
+    width: 960px;
+    height: 100vh;
+    border-radius: 50px;
     background-size: cover;
 }
 
 .campaign_container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: #000;
     color: #fff;
     gap: 60px;
-    padding: 0 60px;
-    box-sizing: border-box;
     height: 100vh;
     opacity: 0;
     transform: translateY(40px);
     transition: 1s ease-out, transform 1s ease-out;
     border-radius: 50px 50px 0 0;
+}
+
+.campaign_container.resource {
+    border-radius: 0 0 50px 50px;
+    background-color: #1d1c1c;
 }
 
 .campaign_container.visible {
@@ -545,47 +548,56 @@ header {
 
 .campaign_top.donate > h2 {
     color: #0DBFE7;
-    font-size: 32px;
-    font-weight: 900;
-    margin-bottom: 32px;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .campaign_top.resource > h2 {
     color: #28C400;
-    font-size: 32px;
-    font-weight: 900;
-    margin-bottom: 32px;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .campaign_text_content {
-    position: relative;
     width: 50%;
-    height: 600px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 100px 60px;
+    box-sizing: border-box;
 }
 
 .campaign_top > p {
-    font-size: 48px;
-    font-weight: 500;
-    top: 20%;
-    left: 0;
-    width: 100%;
+    margin-bottom: 80px;
+    line-height: 1.4;
+    font-size: 50px;
+    font-weight: 600;
+    width: 90%;
+    word-break: keep-all;
+    animation: blink 1s infinite normal;
+}
+
+@keyframes blink {
+    0%, 100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #fff;
+    }
 }
 
 .campaign_text_content > p {
-    font-size: 24px;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    font-size: 20px;
+    width: 80%;
     line-height: 36px;
     word-break: keep-all;
 } 
 
 /* bestseller_container */
 .bestseller_container {
-    margin: 64px 0;
+    margin: 100px 0;
 }
 .bestseller_container > h2 {
     text-align: center;
@@ -598,7 +610,7 @@ header {
     text-align: center;
     font-size: 32px;
     font-weight: 900;
-    margin: 40px;
+    margin: 40px 0 80px 0;
     color: #443f3f;
 }
 
