@@ -1,87 +1,167 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<title>Scroll Text Color Change</title>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html, body {
-    min-height: 100%;
-    background: #fff;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-  }
-  .main_container {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    background: #fff;
-    /* overflow: hidden;  이걸 제거합니다 */
-  }
-  #main_typewriter {
-    position: absolute;
-    bottom: 5%;
-    left: 32px;
-    right: 32px;
-    font-size: 32px;
-    font-weight: 600;
-    text-align: center;
-    user-select: none;
-    line-height: 1.4;
-  }
-  #main_typewriter span {
-    color: #ddd;
-    transition: color 0.3s ease;
-  }
-  #main_typewriter span.active {
-    color: #000;
-  }
-  #scroll_area {
-    height: 150vh;
-    background: #fff;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campaign Interaction</title>
+  <style>
+    .campaign_container.donate > figure {
+      background: url(../image/campaign_1.svg);
+      width: 50%;
+      height: 100vh;
+      border-radius: 50px 50px 0 0;
+      background-size: cover;
+    }
+
+    .campaign_container.resource > figure {
+      background: url(../image/campaign_2.svg);
+      width: 50%;
+      height: 100vh;
+      border-radius: 0 0 50px 50px;
+      background-size: cover;
+    }
+
+    .campaign_container {
+      display: flex;
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 1s ease-out, transform 1s ease-out;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .campaign_container.resource {
+      border-radius: 0 0 50px 50px;
+      background-color: #1d1c1c;
+    }
+
+    .campaign_container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .campaign_top.donate > h2 {
+      color: #0DBFE7;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .campaign_top.resource > h2 {
+      color: #28C400;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .campaign_text_content {
+      width: 50%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 100px 60px;
+      box-sizing: border-box;
+    }
+
+    .campaign_top > p {
+      line-height: 1.4;
+      font-size: 50px;
+      font-weight: 600;
+      width: 90%;
+      word-break: keep-all;
+      white-space: pre-line;
+    }
+
+    .campaign_text_content > p {
+      font-size: 20px;
+      width: 80%;
+      line-height: 36px;
+      word-break: keep-all;
+    }
+  </style>
 </head>
+
 <body>
-  <section class="main_container">
-    <p id="main_typewriter"></p>
+  <section class="campaign_container donate">
+    <figure></figure>
+    <div class="campaign_text_content">
+      <div class="campaign_top donate">
+        <h2>기부와 나눔</h2>
+        <p id="donate-typewriter"></p>
+      </div>
+      <p>
+        2007년 채러티 팟 출시 이후 러쉬의 기부와 나눔은 더욱 다양해졌습니다.
+        러쉬는 비영리 단체와 협력하며 기부와 캠페인으로 긍정적 변화를 이끌고 있습니다.
+        같은 가치를 지닌 단체들과 자원을 나누고 플랫폼을 제공합니다.
+        기부는 5가지 범주로 나뉘며, 금액과 영향은 투명하게 공개됩니다.
+      </p>
+    </div>
   </section>
-  <section id="scroll_area"></section>
+
+  <section class="campaign_container resource">
+    <div class="campaign_text_content">
+      <div class="campaign_top resource">
+        <h2>자원 순환</h2>
+        <p id="resource-typewriter"></p>
+      </div>
+      <p>
+        러쉬 제품은 원재료 선택부터 제작, 유통까지 하나의 경험입니다.
+        신선한 재료와 손작업으로 제품을 만들고 탄소 발자국을 줄입니다.
+        모든 과정은 긍정적인 환경 영향을 남기기 위한 노력입니다.
+        러쉬는 사회적·환경적 변화를 지속적으로 이끌고자 합니다.
+      </p>
+    </div>
+    <figure></figure>
+  </section>
 
   <script>
-    const text = "We believe in making effective products from fresh, organic fruits and vegetables, the finest essential oils, and safe synthetics. Always handmade, never tested on animals. Lush stands for beauty that's kind to people, animals, and the planet.";
-    const container = document.getElementById("main_typewriter");
-    text.split('').forEach(char => {
-      const span = document.createElement('span');
-      span.textContent = char;
-      container.appendChild(span);
-    });
+    const donateText = `우리의 글로벌 기부 생태계는\n적절하고 급진적이며 광범위 합니다.`;
+    const resourceText = `러쉬의 선한 영향력보고서`;
+    const speed = 60;
 
-    const spans = container.querySelectorAll('span');
-    const totalLetters = spans.length;
-
-    window.addEventListener('scroll', () => {
-      console.log(window.scrollY); // 위치 체크용
-
-      const scrollTop = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      let scrollRatio = scrollTop / maxScroll;
-      if (scrollRatio > 1) scrollRatio = 1;
-      if (scrollRatio < 0) scrollRatio = 0;
-      const activeCount = Math.floor(scrollRatio * totalLetters);
-
-      spans.forEach((span, idx) => {
-        if (idx <= activeCount) {
-          span.classList.add('active');
-        } else {
-          span.classList.remove('active');
+    function typeWriter(targetId, text) {
+      const el = document.getElementById(targetId);
+      el.innerHTML = ""; // Clear previous text
+      let i = 0;
+      function typing() {
+        if (i < text.length) {
+          el.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, speed);
         }
-      });
-    });
+      }
+      typing();
+    }
+
+    window.onload = function () {
+      const sections = document.querySelectorAll(".campaign_container");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const isDonate = entry.target.classList.contains('donate');
+          const isResource = entry.target.classList.contains('resource');
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+
+            if (isDonate) {
+              typeWriter("donate-typewriter", donateText);
+            }
+
+            if (isResource) {
+              typeWriter("resource-typewriter", resourceText);
+            }
+          } else {
+            entry.target.classList.remove('visible');
+            // 🔄 텍스트는 유지되도록 삭제 안 함
+          }
+        });
+      }, { threshold: 0.5 });
+
+      sections.forEach(section => observer.observe(section));
+    };
   </script>
+
 </body>
 </html>
