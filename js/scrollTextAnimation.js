@@ -1,28 +1,38 @@
-const text = "We believe in making effective products from fresh, organic fruits and vegetables, the finest essential oils, and safe synthetics. Always handmade, never tested on animals. Lush stands for beauty that's kind to people, animals, and the planet."
+const text = "Lush makes effective, handmade products using fresh, organic ingredients, and is always kind to people, and animals."
+
 const container = document.getElementById("main_typewriter");
 
-text.split('').forEach(char => {
-    const span = document.createElement('span');
-    span.textContent = char;
-    container.appendChild(span);
-});
+    const words = text.split(/(\s+)/);
 
-const spans = container.querySelectorAll('span');
-const totalLetters = spans.length;
+    words.forEach(word => {
+      const span = document.createElement('span');
+      span.textContent = word;
+      container.appendChild(span);
+    });
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollRatio = scrollTop / maxScroll;
+    const spans = container.querySelectorAll('span');
+    const totalWords = spans.length;
 
-    const activeCount = Math.floor(scrollRatio * totalLetters);
+    let lastScrollY = window.scrollY;
 
-    spans.forEach((span, index) => {
-        if (index <= activeCount) {
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) { // 스크롤 내릴 때만 활성화 업데이트
+        const containerRect = container.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const scrollY = Math.min(Math.max(0, windowHeight - containerRect.top), windowHeight);
+        const scrollRatio = scrollY / windowHeight;
+
+        const activeCount = Math.floor(scrollRatio * totalWords);
+
+        spans.forEach((span, index) => {
+          if (index <= activeCount) {
             span.classList.add('active');
-        }
-        else {
-            span.classList.remove('active');
-        }
-    })
-})
+          }
+        });
+      }
+
+      lastScrollY = currentScrollY;
+    });

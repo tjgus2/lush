@@ -1,195 +1,106 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campaign Interaction</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scroll Typing Effect - 단어 단위, 위로 올릴 땐 색 변화 없음</title>
   <style>
-/* main_container */
-.main_container {
-    color: #fff;
-    z-index: 1;
-    position: relative;
-    width: 100%;
-    height: 100vh;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header {
-    padding: 32px;
-    display: flex;
-    align-items: center;
-    width: 50%;
-    justify-content: space-between;
-    z-index: 2;
-    position: relative;
-}
+    body {
+      font-family: sans-serif;
+    }
 
-.header_menu_button {
-    display: flex;
-}
+    .main_container {
+      height: 100vh;
+      background: url('./image/de262e72-3d52-42e3-8d1a-94ead9c96c8b.png') no-repeat center/cover;
+      position: relative;
+    }
 
-.ham_container {
-    padding: 16px 0;
-}
+    .scroll_area {
+      height: 300vh;
+      /* 스크롤 유도용 */
+    }
 
-.hamburger {
-    width: 40px;
-    height: 3px;
-    background-color: #fff;
-    position: relative;
-    transition: 0.3s;
-}
+    .sticky_text {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.5;
+      padding: 0 32px;
+      color: #999;
+      white-space: pre-wrap;
+    }
 
-.hamburger.active {
-    background-color: transparent;
-}
+    .sticky_text span {
+      color: #ddd;
+      transition: color 0.2s ease;
+      cursor: default;
+      user-select: none;
+    }
 
-.hamburger::before,
-.hamburger::after {
-    content: "";
-    width: 40px;
-    height: 3px;
-    background-color: #fff;
-    display: block;
-    position: absolute;
-    left: 0;
-    transition: 0.3s;
-}
-
-.hamburger::before {
-    top: -10px;
-}
-
-.hamburger::after {
-    top: 10px;
-}
-
-.hamburger.active::before {
-    transform: rotate(-45deg);
-    top: 0;
-    background-color: #fff;
-}
-
-.hamburger.active::after {
-    transform: rotate(45deg);
-    top: 0;
-    background-color: #fff;
-}
-
-.header_menu_button>p {
-    font-size: 28px;
-    font-weight: 900;
-    margin-left: 16px;
-}
-
-.wrapper {
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.wrapper.active {
-    opacity: 1;
-}
-
-.header_menu {
-    position: absolute;
-    top: 50%;
-    right: 15%;
-    transform: translateY(-50%);
-}
-
-.header_menu>li {
-    line-height: 72px;
-    font-size: 40px;
-    font-weight: 600;
-}
-
-#main_typewriter {
-    position: absolute;
-    bottom: 10%;
-    left: 32px;
-    font-size: 48px;
-    font-weight: 600;
-}
-
-#main_typewriter.hidden {
-    opacity: 0;
-}
-
-#main_typewriter span {
-    color: #ddd;
-    transition: color 0.3s ease;
-}
-
-#main_typewriter span.active {
-    color: #000;
-}
+    .sticky_text span.active {
+      color: #000;
+    }
   </style>
 </head>
 
 <body>
+
+  <div class="scroll_area">
     <section class="main_container">
-        <header>
-            <h1>
-                <img src="./image/logo.svg" alt="로고">
-            </h1>
-            <div class="header_menu_button">
-                <div class="ham_container">
-                    <div class="hamburger"></div>
-                </div>
-                <p>menu</p>
-            </div>
-        </header>
-        <div class="wrapper">
-            <ul class="header_menu">
-                <li>Hair</li>
-                <li>Face</li>
-                <li>Hand</li>
-                <li>Body</li>
-                <li>location</li>
-            </ul>
-        </div>
-        <div class="main_text_content">
-            <p id="main_typewriter"></p>
-        </div>
+      <p class="sticky_text" id="main_typewriter"></p>
     </section>
+  </div>
 
   <script>
-    const text = "We believe in making effective products from fresh, organic fruits and vegetables, the finest essential oils, and safe synthetics. Always handmade, never tested on animals. Lush stands for beauty that's kind to people, animals, and the planet."
-const container = document.getElementById("main_typewriter");
+    const text = "We believe in making effective products from fresh, organic fruits and vegetables, the finest essential oils, and safe synthetics. Always handmade, never tested on animals. Lush stands for beauty that's kind to people, animals, and the planet.";
 
-text.split('').forEach(char => {
-    const span = document.createElement('span');
-    span.textContent = char;
-    container.appendChild(span);
-});
+    const container = document.getElementById("main_typewriter");
 
-const spans = container.querySelectorAll('span');
-const totalLetters = spans.length;
+    const words = text.split(/(\s+)/);
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollRatio = scrollTop / maxScroll;
+    words.forEach(word => {
+      const span = document.createElement('span');
+      span.textContent = word;
+      container.appendChild(span);
+    });
 
-    const activeCount = Math.floor(scrollRatio * totalLetters);
+    const spans = container.querySelectorAll('span');
+    const totalWords = spans.length;
 
-    spans.forEach((span, index) => {
-        if (index <= activeCount) {
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) { // 스크롤 내릴 때만 활성화 업데이트
+        const containerRect = container.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const scrollY = Math.min(Math.max(0, windowHeight - containerRect.top), windowHeight);
+        const scrollRatio = scrollY / windowHeight;
+
+        const activeCount = Math.floor(scrollRatio * totalWords);
+
+        spans.forEach((span, index) => {
+          if (index <= activeCount) {
             span.classList.add('active');
-        }
-        else {
-            span.classList.remove('active');
-        }
-    })
-})
+          }
+        });
+      }
+
+      lastScrollY = currentScrollY;
+    });
   </script>
 
 </body>
+
 </html>

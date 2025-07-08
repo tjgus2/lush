@@ -46,9 +46,11 @@
 .main_container {
     color: #fff;
     z-index: 1;
-    position: relative;
     width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 400px;
 }
 
 header {
@@ -148,11 +150,10 @@ header {
 }
 
 #main_typewriter {
-    position: absolute;
-    bottom: 10%;
-    left: 32px;
-    font-size: 48px;
+    font-size: 84px;
     font-weight: 600;
+    padding: 32px;
+    position: sticky;
 }
 
 #main_typewriter.hidden {
@@ -160,7 +161,7 @@ header {
 }
 
 #main_typewriter span {
-    color: #ddd;
+    color: #2d2d2d;
     transition: color 0.3s ease;
 }
 
@@ -195,7 +196,7 @@ header {
 .intro_container:nth-child(2),
 .intro_container:nth-child(3),
 .intro_container:nth-child(4) {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .intro_container:nth-child(2)::before,
@@ -547,7 +548,7 @@ header {
 
 .campaign_container {
     display: flex;
-    background-color: #000;
+    background-color: #1d1c1c;
     color: #fff;
     height: 100vh;
     opacity: 0;
@@ -558,7 +559,7 @@ header {
 
 .campaign_container.resource {
     border-radius: 0 0 50px 50px;
-    background-color: #1d1c1c;
+    background-color: #000;
 }
 
 .campaign_container.visible {
@@ -720,4 +721,3 @@ footer {
 .policy>p:nth-of-type(1) {
     color: #FBE85E;
 }
-

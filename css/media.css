@@ -1,7 +1,42 @@
 /* 태블릿 뷰 */
+@media (max-width: 1300px) {
+    .intro_content {
+        height: 60%;
+    }
+
+    .intro_container.blue>.intro_content>figure {
+        width: 500px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .intro_container.yellow>.intro_content>figure {
+        width: 500px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .intro_container.sky>.intro_content>figure {
+        width: 500px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .intro_container.red>.intro_content>figure {
+        width: 500px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+}
+
 @media (max-width: 1024px) {
     #main_typewriter {
-        font-size: 32px;
+        font-size: 60px;
     }
 
     .header_menu>li {
@@ -11,11 +46,6 @@
 
     .intro_container {
         padding: 20px 50px;
-    }
-
-    .intro_container.blue>.intro_content>figure {
-        width: 500px;
-        height: 400px;
     }
 
     .intro_container>h2 {

@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campaign Interaction</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campaign Scroll Typing</title>
   <style>
-    .campaign_container.donate > figure {
-      background: url(../image/campaign_1.svg);
-      width: 50%;
-      height: 100vh;
-      border-radius: 50px 50px 0 0;
-      background-size: cover;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .campaign_container.resource > figure {
-      background: url(../image/campaign_2.svg);
-      width: 50%;
-      height: 100vh;
-      border-radius: 0 0 50px 50px;
-      background-size: cover;
+    body {
+      font-family: sans-serif;
     }
 
     .campaign_container {
@@ -29,12 +24,37 @@
       opacity: 0;
       transform: translateY(40px);
       transition: 1s ease-out, transform 1s ease-out;
+      margin-bottom: 100vh;
+      /* ✅ 섹션 간 간격 추가 */
+    }
+
+    .campaign_container:last-of-type {
+      margin-bottom: 0;
+      /* ✅ 마지막은 간격 제거 */
+    }
+
+    .campaign_container.donate {
       border-radius: 50px 50px 0 0;
     }
 
     .campaign_container.resource {
-      border-radius: 0 0 50px 50px;
       background-color: #1d1c1c;
+      border-radius: 0 0 50px 50px;
+    }
+
+    .campaign_container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+    /* .campaign_container {
+      display: flex;
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 1s ease-out, transform 1s ease-out;
     }
 
     .campaign_container.visible {
@@ -42,16 +62,27 @@
       transform: translateY(0);
     }
 
-    .campaign_top.donate > h2 {
-      color: #0DBFE7;
-      font-size: 24px;
-      margin-bottom: 20px;
+    .campaign_container.donate {
+      border-radius: 50px 50px 0 0;
     }
 
-    .campaign_top.resource > h2 {
-      color: #28C400;
-      font-size: 24px;
-      margin-bottom: 20px;
+    .campaign_container.resource {
+      background-color: #1d1c1c;
+      border-radius: 0 0 50px 50px;
+    } */
+
+    .campaign_container.donate>figure {
+      background: url(../image/campaign_1.svg) no-repeat center/cover;
+      width: 50%;
+      height: 100vh;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .campaign_container.resource>figure {
+      background: url(../image/campaign_2.svg) no-repeat center/cover;
+      width: 50%;
+      height: 100vh;
+      border-radius: 0 0 50px 50px;
     }
 
     .campaign_text_content {
@@ -61,28 +92,39 @@
       flex-direction: column;
       justify-content: space-evenly;
       padding: 100px 60px;
-      box-sizing: border-box;
     }
 
-    .campaign_top > p {
-      line-height: 1.4;
+    .campaign_top>p {
       font-size: 50px;
       font-weight: 600;
       width: 90%;
       word-break: keep-all;
-      white-space: pre-line;
+      line-height: 1.4;
     }
 
-    .campaign_text_content > p {
+    .campaign_text_content>p {
       font-size: 20px;
       width: 80%;
       line-height: 36px;
       word-break: keep-all;
     }
+
+    .campaign_top.donate>h2 {
+      color: #0DBFE7;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .campaign_top.resource>h2 {
+      color: #28C400;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 
 <body>
+
   <section class="campaign_container donate">
     <figure></figure>
     <div class="campaign_text_content">
@@ -116,52 +158,65 @@
   </section>
 
   <script>
-    const donateText = `우리의 글로벌 기부 생태계는\n적절하고 급진적이며 광범위 합니다.`;
+    const donateText = `우리의 글로벌 기부 생태계는
+적절하고 급진적이며 광범위 합니다.`;
+
     const resourceText = `러쉬의 선한 영향력보고서`;
+
     const speed = 60;
 
-    function typeWriter(targetId, text) {
-      const el = document.getElementById(targetId);
-      el.innerHTML = ""; // Clear previous text
+    function typeWriter(elementId, text) {
+      const element = document.getElementById(elementId);
+      element.innerHTML = ""; // 초기화
       let i = 0;
+
       function typing() {
         if (i < text.length) {
-          el.innerHTML += text.charAt(i);
+          element.innerHTML += text.charAt(i);
           i++;
           setTimeout(typing, speed);
         }
       }
+
       typing();
     }
 
-    window.onload = function () {
-      const sections = document.querySelectorAll(".campaign_container");
+    const sections = document.querySelectorAll(".campaign_container");
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const isDonate = entry.target.classList.contains('donate');
-          const isResource = entry.target.classList.contains('resource');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const isVisible = entry.isIntersecting;
 
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+        if (isVisible) {
+          entry.target.classList.add('visible');
 
-            if (isDonate) {
-              typeWriter("donate-typewriter", donateText);
-            }
-
-            if (isResource) {
-              typeWriter("resource-typewriter", resourceText);
-            }
-          } else {
-            entry.target.classList.remove('visible');
-            // 🔄 텍스트는 유지되도록 삭제 안 함
+          if (entry.target.classList.contains("donate")) {
+            typeWriter("donate-typewriter", donateText);
           }
-        });
-      }, { threshold: 0.5 });
 
-      sections.forEach(section => observer.observe(section));
-    };
+          if (entry.target.classList.contains("resource")) {
+            typeWriter("resource-typewriter", resourceText);
+          }
+        } else {
+          // 다시 벗어나면 텍스트 리셋
+          if (entry.target.classList.contains("donate")) {
+            document.getElementById("donate-typewriter").innerHTML = "";
+          }
+
+          if (entry.target.classList.contains("resource")) {
+            document.getElementById("resource-typewriter").innerHTML = "";
+          }
+
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    sections.forEach(section => observer.observe(section));
   </script>
 
 </body>
+
 </html>
