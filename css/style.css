@@ -202,7 +202,6 @@ header {
 .intro_container:nth-child(2)::before,
 .intro_container:nth-child(3)::before,
 .intro_container:nth-child(4)::before {
-    /* width: 100px; */
     height: 48px;
     display: block;
     content: "";
@@ -312,7 +311,6 @@ header {
 /* recommend_container */
 .recommend_container {
     margin: 100px 0;
-    height: 100vh;
     padding: 36px 100px;
 }
 
