@@ -154,6 +154,7 @@ header {
     font-weight: 600;
     padding: 32px;
     position: sticky;
+    text-align: center;
 }
 
 #main_typewriter.hidden {
@@ -271,8 +272,6 @@ header {
     background: url(../image/intro_1.svg);
     width: 800px;
     height: 700px;
-    aspect-ratio: 8/7;
-    object-fit: cover;
 }
 
 /* yellow */
@@ -299,7 +298,7 @@ header {
 
 /* red */
 .intro_container.red>.intro_content {
-    background-color: #e74653;
+    background-color: #ec3746;
 }
 
 .intro_container.red>.intro_content>figure {
@@ -406,6 +405,10 @@ header {
 
 .tab-content.dirty>h3 {
     color: #016B73;
+}
+
+.show_name {
+    display: none;
 }
 
 .recommend_content {
@@ -527,6 +530,16 @@ header {
     border-radius: 16px;
 }
 
+.show_button {
+    background-color: #AEADAD;
+    border: none;
+    padding: 12px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 16px;
+    display: none;
+}
+
 /* campaign_container */
 .campaign_container.donate>figure {
     background: url(../image/campaign_1.svg);
@@ -643,6 +656,7 @@ header {
 
 .bestseller_content {
     display: flex;
+    /* flex-wrap: wrap; */
     gap: 32px;
 }
 

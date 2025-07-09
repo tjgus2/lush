@@ -55,15 +55,15 @@
     }
 
     .intro_text_content.margin_right {
-        margin-right: 48px;
+        margin-right: 80px;
     }
 
     .intro_text_content.margin_left {
-        margin-left: 48px;
+        margin-left: px;
     }
 
     .margin_left {
-        margin-left: 40px;
+        margin-left: 0;
     }
 
     .intro_text_content>h3 {
@@ -97,6 +97,7 @@
 
     .recommend_content {
         margin-bottom: 24px;
+        gap: 80px;
     }
 
     .rose_1 {
@@ -253,13 +254,33 @@
     }
 
     .recommend_text_content>p {
-        font-size: 16px;
-        margin-bottom: 18px;
+        display: none;
+    }
+
+    .recommend_text_content>button:first-of-type {
+        display: none;
+    }
+
+    .show_button {
+        display: block;
     }
 
     .recommend_text_content>button {
         padding: 8px;
         font-size: 16px;
+    }
+
+    .campaign_top.donate>h2 {
+        font-size: 20px;
+    }
+
+    .campaign_top>p {
+        font-size: 36px;
+    }
+
+    .campaign_text_content>p {
+        font-size: 16px;
+        line-height: 28px;
     }
 
     .bestseller_container {
@@ -280,9 +301,65 @@
         height: 320px;
     }
 
+    .address {
+        display: none;
+    }
+
     .service>h2,
     .gift>h2 {
         font-size: 20px;
     }
+}
 
+@media (max-width: 730px) {
+    .intro_text_content>h3 {
+        font-weight: 400;
+    }
+
+    .intro_text_content>p {
+        display: none;
+    }
+
+    .recommend_container>h2 {
+        text-align: center;
+        margin-bottom: 46px;
+    }
+
+    .tab-content {
+        display: block;
+    }
+
+    .tab-content>h3 {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .tabs {
+        display: none;
+    }
+
+    .recommend_text_content {
+        display: none;
+    }
+
+    .flex_box {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 32px;
+    }
+
+    .tab-content > h3:first-of-type {
+        display: none;
+    }
+
+    .show_name {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    #main_typewriter {
+        font-size: 48px;
+    }
 }

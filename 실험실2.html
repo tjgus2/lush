@@ -1,105 +1,132 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Scroll Typing Effect - 단어 단위, 위로 올릴 땐 색 변화 없음</title>
+  <title>Scroll Test</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    .bestseller_container {
+      margin: 64px 0;
     }
 
-    body {
-      font-family: sans-serif;
+    .bestseller_container>h2 {
+      text-align: center;
+      font-size: 64px;
+      font-weight: 900;
+      margin-top: 54px;
     }
 
-    .main_container {
-      height: 100vh;
-      background: url('./image/de262e72-3d52-42e3-8d1a-94ead9c96c8b.png') no-repeat center/cover;
+    .bestseller_container>p {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      margin: 40px;
+      color: #443f3f;
+    }
+
+    .bestseller_slider_wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .bestseller_slider {
+      animation: scroll 20s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .bestseller_content {
+      display: flex;
+      gap: 32px;
+    }
+
+    .bestseller_content>li {
       position: relative;
     }
 
-    .scroll_area {
-      height: 300vh;
-      /* 스크롤 유도용 */
+    .bestseller_content>li>img {
+      width: 400px;
+      height: 400px;
     }
 
-    .sticky_text {
-      position: sticky;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 48px;
-      font-weight: 600;
-      line-height: 1.5;
-      padding: 0 32px;
-      color: #999;
-      white-space: pre-wrap;
+    .bestseller_overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      transition: 0.7s;
     }
 
-    .sticky_text span {
-      color: #ddd;
-      transition: color 0.2s ease;
-      cursor: default;
-      user-select: none;
+    .bestseller_content>li:hover .bestseller_overlay {
+      opacity: 1;
     }
 
-    .sticky_text span.active {
-      color: #000;
+    .bestseller_content>li:hover>img {
+      transform: scale(1.1);
+      transition: 0.7s;
     }
   </style>
 </head>
 
 <body>
-
-  <div class="scroll_area">
-    <section class="main_container">
-      <p class="sticky_text" id="main_typewriter"></p>
-    </section>
-  </div>
-
-  <script>
-    const text = "We believe in making effective products from fresh, organic fruits and vegetables, the finest essential oils, and safe synthetics. Always handmade, never tested on animals. Lush stands for beauty that's kind to people, animals, and the planet.";
-
-    const container = document.getElementById("main_typewriter");
-
-    const words = text.split(/(\s+)/);
-
-    words.forEach(word => {
-      const span = document.createElement('span');
-      span.textContent = word;
-      container.appendChild(span);
-    });
-
-    const spans = container.querySelectorAll('span');
-    const totalWords = spans.length;
-
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY) { // 스크롤 내릴 때만 활성화 업데이트
-        const containerRect = container.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        const scrollY = Math.min(Math.max(0, windowHeight - containerRect.top), windowHeight);
-        const scrollRatio = scrollY / windowHeight;
-
-        const activeCount = Math.floor(scrollRatio * totalWords);
-
-        spans.forEach((span, index) => {
-          if (index <= activeCount) {
-            span.classList.add('active');
-          }
-        });
-      }
-
-      lastScrollY = currentScrollY;
-    });
-  </script>
+  <section class="bestseller_container">
+    <h2>Bestseller</h2>
+    <p>We are changing the world we live in for the better.</p>
+    <div class="bestseller_slider_wrapper">
+      <div class="bestseller_slider">
+        <ul class="bestseller_content">
+          <li>
+            <img src="./image/best_1.png" alt="">
+            <div class="bestseller_overlay">
+              Dirty Springwash 샤워젤
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_2.png" alt="">
+            <div class="bestseller_overlay">
+              인터갈락틱 200g - 버블바 / 입욕제
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_3.png" alt="">
+            <div class="bestseller_overlay">
+              American Cream 헤어 컨디셔너
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_4.png" alt="">
+            <div class="bestseller_overlay">
+              마스크 오브 매그너민티
+            </div>
+          </li>
+          <li>
+            <img src="./image/best_5.png" alt="">
+            <div class="bestseller_overlay">
+              더티 스프레이
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
 </body>
 
