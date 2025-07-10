@@ -34,12 +34,6 @@
         background-repeat: no-repeat;
         background-position-y: center;
     }
-}
-
-@media (max-width: 1300px) {
-    #main_typewriter {
-        font-size: 72px;
-    }
 
     .intro_container {
         padding: 20px 50px;
@@ -59,7 +53,7 @@
     }
 
     .intro_text_content.margin_left {
-        margin-left: px;
+        margin-left: 80px;
     }
 
     .margin_left {
@@ -73,6 +67,12 @@
 
     .intro_text_content>p {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 1300px) {
+    #main_typewriter {
+        font-size: 72px;
     }
 
     .recommend_container {
@@ -92,7 +92,7 @@
 
     .tab-btn {
         font-size: 20px;
-        padding: 8px;
+        padding: 10px;
     }
 
     .recommend_content {
@@ -219,6 +219,38 @@
         font-size: 28px;
     }
 
+    .intro_container.blue>.intro_content>figure {
+        width: 400px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+
+    .intro_container.yellow>.intro_content>figure {
+        width: 400px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+
+    .intro_container.sky>.intro_content>figure {
+        width: 400px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+
+    .intro_container.red>.intro_content>figure {
+        width: 400px;
+        height: calc(500px * 7 / 8);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+
     .recommend_container {
         margin: 50px 0;
         padding: 18px 50px;
@@ -236,7 +268,7 @@
 
     .tab-btn {
         font-size: 16px;
-        padding: 6px;
+        padding: 8px;
     }
 
     .tab-content>h3 {
@@ -268,6 +300,12 @@
     .recommend_text_content>button {
         padding: 8px;
         font-size: 16px;
+    }
+
+    .campaign_container.donate > figure {
+        width: 380px;
+        height: 40vh;
+        background-size: center;
     }
 
     .campaign_top.donate>h2 {
