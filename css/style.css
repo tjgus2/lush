@@ -331,6 +331,7 @@ header {
     font-size: 22px;
     border-radius: 16px;
     padding: 12px;
+    font-family: 'Alike', serif;
 }
 
 .tab-btn[data-tab="rose"].active {
@@ -625,20 +626,22 @@ header {
     text-align: center;
     font-size: 64px;
     font-weight: 900;
-    margin-top: 54px;
+    font-family: 'Alike', serif;
 }
 
 .bestseller_container>p {
     text-align: center;
     font-size: 32px;
     font-weight: 900;
-    margin: 40px;
+    margin: 50px 0 100px 0;
     color: #443f3f;
+    font-family: 'Alike', serif;
 }
 
 .bestseller_slider {
     display: flex;
     width: max-content;
+    overflow: hidden
 }
 
 .bestseller_content {

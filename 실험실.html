@@ -6,107 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Campaign Scroll Typing</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* campaign_container */
+    .campaign_container.donate>figure {
+      background: url(../image/campaign_1.svg);
+      width: 50%;
+      height: 100vh;
+      border-radius: 50px 50px 0 0;
+      background-size: cover;
     }
 
-    body {
-      font-family: sans-serif;
+    .campaign_container.resource>figure {
+      background: url(../image/campaign_2.svg);
+      width: 50%;
+      height: 100vh;
+      border-radius: 0 0 50px 50px;
+      background-size: cover;
     }
 
     .campaign_container {
       display: flex;
-      background-color: #000;
+      background-color: #1d1c1c;
       color: #fff;
       height: 100vh;
       opacity: 0;
       transform: translateY(40px);
       transition: 1s ease-out, transform 1s ease-out;
-      margin-bottom: 100vh;
-      /* ✅ 섹션 간 간격 추가 */
-    }
-
-    .campaign_container:last-of-type {
-      margin-bottom: 0;
-      /* ✅ 마지막은 간격 제거 */
-    }
-
-    .campaign_container.donate {
       border-radius: 50px 50px 0 0;
     }
 
     .campaign_container.resource {
-      background-color: #1d1c1c;
       border-radius: 0 0 50px 50px;
-    }
-
-    .campaign_container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-    /* .campaign_container {
-      display: flex;
       background-color: #000;
-      color: #fff;
-      height: 100vh;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: 1s ease-out, transform 1s ease-out;
     }
 
     .campaign_container.visible {
       opacity: 1;
       transform: translateY(0);
-    }
-
-    .campaign_container.donate {
-      border-radius: 50px 50px 0 0;
-    }
-
-    .campaign_container.resource {
-      background-color: #1d1c1c;
-      border-radius: 0 0 50px 50px;
-    } */
-
-    .campaign_container.donate>figure {
-      background: url(../image/campaign_1.svg) no-repeat center/cover;
-      width: 50%;
-      height: 100vh;
-      border-radius: 50px 50px 0 0;
-    }
-
-    .campaign_container.resource>figure {
-      background: url(../image/campaign_2.svg) no-repeat center/cover;
-      width: 50%;
-      height: 100vh;
-      border-radius: 0 0 50px 50px;
-    }
-
-    .campaign_text_content {
-      width: 50%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      padding: 100px 60px;
-    }
-
-    .campaign_top>p {
-      font-size: 50px;
-      font-weight: 600;
-      width: 90%;
-      word-break: keep-all;
-      line-height: 1.4;
-    }
-
-    .campaign_text_content>p {
-      font-size: 20px;
-      width: 80%;
-      line-height: 36px;
-      word-break: keep-all;
     }
 
     .campaign_top.donate>h2 {
@@ -119,6 +54,31 @@
       color: #28C400;
       font-size: 24px;
       margin-bottom: 20px;
+    }
+
+    .campaign_text_content {
+      width: 50%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 100px 60px;
+      box-sizing: border-box;
+    }
+
+    .campaign_top>p {
+      line-height: 1.4;
+      font-size: 50px;
+      font-weight: 600;
+      width: 90%;
+      word-break: keep-all;
+    }
+
+    .campaign_text_content>p {
+      font-size: 20px;
+      width: 80%;
+      line-height: 36px;
+      word-break: keep-all;
     }
   </style>
 </head>
@@ -158,63 +118,71 @@
   </section>
 
   <script>
+    const fadeupSection = document.querySelectorAll(".campaign_container");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    fadeupSection.forEach(section => observer.observe(section));
+
     const donateText = `우리의 글로벌 기부 생태계는
 적절하고 급진적이며 광범위 합니다.`;
-
     const resourceText = `러쉬의 선한 영향력보고서`;
 
     const speed = 60;
 
-    function typeWriter(elementId, text) {
-      const element = document.getElementById(elementId);
-      element.innerHTML = ""; // 초기화
+    function typeWriter(targetId, text, callback) {
       let i = 0;
+      const element = document.getElementById(targetId);
 
       function typing() {
         if (i < text.length) {
           element.innerHTML += text.charAt(i);
           i++;
           setTimeout(typing, speed);
+        } else {
+          if (callback) callback();
         }
       }
-
       typing();
     }
 
-    const sections = document.querySelectorAll(".campaign_container");
+    window.onload = function () {
+      const donateContainer = document.querySelector(".campaign_container.donate");
+      const resourceContainer = document.querySelector(".campaign_container.resource");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const isVisible = entry.isIntersecting;
+      let donateStarted = false;
+      let resourceStarted = false;
 
-        if (isVisible) {
-          entry.target.classList.add('visible');
-
-          if (entry.target.classList.contains("donate")) {
-            typeWriter("donate-typewriter", donateText);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (entry.target.classList.contains('donate') && !donateStarted) {
+              donateStarted = true;
+              entry.target.classList.add('visible');
+              typeWriter("donate-typewriter", donateText);
+            }
+            if (entry.target.classList.contains('resource') && !resourceStarted) {
+              resourceStarted = true;
+              entry.target.classList.add('visible');
+              typeWriter("resource-typewriter", resourceText);
+            }
           }
-
-          if (entry.target.classList.contains("resource")) {
-            typeWriter("resource-typewriter", resourceText);
-          }
-        } else {
-          // 다시 벗어나면 텍스트 리셋
-          if (entry.target.classList.contains("donate")) {
-            document.getElementById("donate-typewriter").innerHTML = "";
-          }
-
-          if (entry.target.classList.contains("resource")) {
-            document.getElementById("resource-typewriter").innerHTML = "";
-          }
-
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, {
-      threshold: 0.5
-    });
-
-    sections.forEach(section => observer.observe(section));
+        })
+      }, {
+        threshold: 0.5
+      })
+      observer.observe(donateContainer);
+      observer.observe(resourceContainer);
+    }
+    F
   </script>
 
 </body>

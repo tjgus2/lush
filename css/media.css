@@ -251,6 +251,10 @@
         background-position-y: center;
     }
 
+    .intro_text_content {
+        gap: 80px;
+    }
+
     .recommend_container {
         margin: 50px 0;
         padding: 18px 50px;
@@ -350,12 +354,34 @@
 }
 
 @media (max-width: 730px) {
+    .intro_content {
+        flex-direction: column-reverse;
+    }
+
+    .intro_text_content {
+        gap: 0;
+        height: 400px;
+        width: 40%;
+    }
+
     .intro_text_content>h3 {
-        font-weight: 400;
+        font-weight: 600;
     }
 
     .intro_text_content>p {
         display: none;
+    }
+
+    .intro_text_content.margin_right {
+        margin-right: 0;
+    }
+
+    .intro_text_content.margin_left {
+        margin-left: 0;
+    }
+    
+    .margin_left {
+        margin-top: 0;
     }
 
     .recommend_container>h2 {
@@ -396,8 +422,128 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     #main_typewriter {
-        font-size: 48px;
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .rose_1 {
+        background: url(../image/로즈잼1.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .rose_2 {
+        background: url(../image/로즈잼2.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .sleepy_1 {
+        background: url(../image/슬리피1.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .sleepy_2 {
+        background: url(../image/슬리피2.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .honey_1 {
+        background: url(../image/허니1.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .honey_2 {
+        background: url(../image/허니2.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .olive_1 {
+        background: url(../image/올리브1.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .olive_2 {
+        background: url(../image/올리브2.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .inter_1 {
+        background: url(../image/인터1.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .inter_2 {
+        background: url(../image/인터2.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .dirty_1 {
+        background: url(../image/더티1.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .dirty_2 {
+        background: url(../image/더티2.svg);
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+@media (max-width: 360px) {
+    .flex_box {
+        flex-direction: column;
     }
 }
