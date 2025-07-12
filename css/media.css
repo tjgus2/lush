@@ -1,38 +1,18 @@
 @media (max-width: 1430px) {
+    /* 소개 컨테이너 */
     .intro_content {
         height: 60%;
     }
 
-    .intro_container.blue>.intro_content>figure {
-        width: 500px;
-        height: calc(500px * 7 / 8);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-y: center;
-    }
-
-    .intro_container.yellow>.intro_content>figure {
-        width: 500px;
-        height: calc(500px * 7 / 8);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-y: center;
-    }
-
-    .intro_container.sky>.intro_content>figure {
-        width: 500px;
-        height: calc(500px * 7 / 8);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-y: center;
-    }
-
+    .intro_container.blue>.intro_content>figure,
+    .intro_container.yellow>.intro_content>figure,
+    .intro_container.sky>.intro_content>figure,
     .intro_container.red>.intro_content>figure {
         width: 500px;
         height: calc(500px * 7 / 8);
         background-size: contain;
         background-repeat: no-repeat;
-        background-position-y: center;
+        background-position: center center;
     }
 
     .intro_container {
@@ -71,10 +51,12 @@
 }
 
 @media (max-width: 1300px) {
+    /* 메인 컨테이너 */
     #main_typewriter {
         font-size: 72px;
     }
 
+    /* 추천 컨테이너 */
     .recommend_container {
         margin: 70px 0;
         padding: 24px 64px;
@@ -100,107 +82,18 @@
         gap: 80px;
     }
 
-    .rose_1 {
-        background: url(../image/로즈잼1.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .rose_2 {
-        background: url(../image/로즈잼2.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .sleepy_1 {
-        background: url(../image/슬리피1.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .sleepy_2 {
-        background: url(../image/슬리피2.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .honey_1 {
-        background: url(../image/허니1.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .honey_2 {
-        background: url(../image/허니2.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .olive_1 {
-        background: url(../image/올리브1.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .olive_2 {
-        background: url(../image/올리브2.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .inter_1 {
-        background: url(../image/인터1.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .inter_2 {
-        background: url(../image/인터2.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .dirty_1 {
-        background: url(../image/더티1.svg);
-        width: 200px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
+    .rose_1,
+    .rose_2,
+    .sleepy_1,
+    .sleepy_2,
+    .honey_1,
+    .honey_2,
+    .olive_1,
+    .olive_2,
+    .inter_1,
+    .inter_2,
+    .dirty_1,
     .dirty_2 {
-        background: url(../image/더티2.svg);
         width: 200px;
         height: 200px;
         background-size: contain;
@@ -210,6 +103,7 @@
 }
 
 @media (max-width: 1024px) {
+    /* 메인 컨테이너 */
     #main_typewriter {
         font-size: 60px;
     }
@@ -219,42 +113,24 @@
         font-size: 28px;
     }
 
-    .intro_container.blue>.intro_content>figure {
+    /* 소개 컨테이너 */
+    .intro_container.blue>.intro_content>figure,
+    .intro_container.yellow>.intro_content>figure,
+    .intro_container.sky>.intro_content>figure,
+    .intro_container.red>.intro_content>figure
+     {
         width: 400px;
-        height: calc(500px * 7 / 8);
+        height: calc(400px * 7 / 8);
         background-size: contain;
         background-repeat: no-repeat;
-        background-position-y: center;
-    }
-
-    .intro_container.yellow>.intro_content>figure {
-        width: 400px;
-        height: calc(500px * 7 / 8);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-y: center;
-    }
-
-    .intro_container.sky>.intro_content>figure {
-        width: 400px;
-        height: calc(500px * 7 / 8);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-y: center;
-    }
-
-    .intro_container.red>.intro_content>figure {
-        width: 400px;
-        height: calc(500px * 7 / 8);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position-y: center;
+        background-position: center center;
     }
 
     .intro_text_content {
         gap: 80px;
     }
 
+    /* 추천 컨테이너 */
     .recommend_container {
         margin: 50px 0;
         padding: 18px 50px;
@@ -289,10 +165,7 @@
         margin-bottom: 18px;
     }
 
-    .recommend_text_content>p {
-        display: none;
-    }
-
+    .recommend_text_content>p,
     .recommend_text_content>button:first-of-type {
         display: none;
     }
@@ -306,7 +179,11 @@
         font-size: 16px;
     }
 
-    .campaign_container.donate > figure {
+    /* 캠페인 컨테이너 */
+    .campaign_container {
+        padding: 50px;
+    }
+    .campaign_container.donate>figure {
         width: 380px;
         height: 40vh;
         background-size: center;
@@ -325,6 +202,7 @@
         line-height: 28px;
     }
 
+    /* 베스트셀러 컨테이너 */
     .bestseller_container {
         margin: 60px 0;
     }
@@ -339,11 +217,12 @@
         margin: 28px 0 56px 0;
     }
 
+    /* 푸터 */
     footer {
         height: 320px;
     }
 
-    .address {
+    .policy {
         display: none;
     }
 
@@ -354,6 +233,7 @@
 }
 
 @media (max-width: 730px) {
+    /* 소개 컨테이너 */
     .intro_content {
         flex-direction: column-reverse;
     }
@@ -379,11 +259,12 @@
     .intro_text_content.margin_left {
         margin-left: 0;
     }
-    
+
     .margin_left {
         margin-top: 0;
     }
 
+    /* 추천 컨테이너 */
     .recommend_container>h2 {
         text-align: center;
         margin-bottom: 46px;
@@ -413,7 +294,7 @@
         margin-bottom: 32px;
     }
 
-    .tab-content > h3:first-of-type {
+    .tab-content>h3:first-of-type {
         display: none;
     }
 
@@ -423,127 +304,115 @@
 }
 
 @media (max-width: 700px) {
+    /* 메인 컨테이너 */
     #main_typewriter {
         font-size: 40px;
+    }
+
+    /* 베스트셀러 컨테이너 */
+    .bestseller_content>li>img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .bestseller_container>h2 {
+        font-size: 32px;
+        margin-top: 28px;
+    }
+
+    .bestseller_container>p {
+        font-size: 20px;
+        margin: 22px 0 44px 0;
+    }
+
+    /* 푸터 */
+    footer {
+        height: 250px;
+    }
+    
+    .contact {
+        display: none;
     }
 }
 
 @media (max-width: 500px) {
+    /* 메인 컨테이너 */
     header {
         width: 100%;
         box-sizing: border-box;
     }
-    .rose_1 {
-        background: url(../image/로즈잼1.svg);
-        width: 150px;
-        height: 150px;
+
+    /* 소개 컨테이너 */
+    .intro_container.blue>.intro_content>figure,
+    .intro_container.yellow>.intro_content>figure,
+    .intro_container.sky>.intro_content>figure,
+    .intro_container.red>.intro_content>figure {
+        width: 300px;
+        height: calc(300px * 7 / 8);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
     }
-
-    .rose_2 {
-        background: url(../image/로즈잼2.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .sleepy_1 {
-        background: url(../image/슬리피1.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .sleepy_2 {
-        background: url(../image/슬리피2.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .honey_1 {
-        background: url(../image/허니1.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .honey_2 {
-        background: url(../image/허니2.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .olive_1 {
-        background: url(../image/올리브1.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .olive_2 {
-        background: url(../image/올리브2.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .inter_1 {
-        background: url(../image/인터1.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .inter_2 {
-        background: url(../image/인터2.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
-    .dirty_1 {
-        background: url(../image/더티1.svg);
-        width: 150px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-
+    
+    /* 추천 컨테이너 */
+    .rose_1,
+    .rose_2,
+    .sleepy_1,
+    .sleepy_2,
+    .honey_1,
+    .honey_2,
+    .olive_1,
+    .olive_2,
+    .inter_1,
+    .inter_2,
+    .dirty_1,
     .dirty_2 {
-        background: url(../image/더티2.svg);
         width: 150px;
         height: 150px;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
+    }
+
+    /* 푸터 */
+    .address {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    /* 소개 컨테이너 */
+    .intro_text_content>h3 {
+        font-size: 18px;
+        line-height: 30px;
     }
 }
 
 @media (max-width: 360px) {
+    /* 추천 컨테이너 */
     .flex_box {
         flex-direction: column;
+    }
+
+    /* 베스트셀러 컨테이너 */
+    .bestseller_content>li>img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .bestseller_container>h2 {
+        font-size: 28px;
+        margin-top: 22px;
+    }
+
+    .bestseller_container>p {
+        font-size: 16px;
+        margin: 20px 0 40px 0;
+    }
+
+    /* 푸터 */
+    .address {
+        font-size: 12px;
     }
 }
