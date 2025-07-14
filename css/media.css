@@ -1,4 +1,5 @@
 @media (max-width: 1430px) {
+
     /* 소개 컨테이너 */
     .intro_content {
         height: 60%;
@@ -51,6 +52,7 @@
 }
 
 @media (max-width: 1300px) {
+
     /* 메인 컨테이너 */
     #main_typewriter {
         font-size: 72px;
@@ -103,6 +105,7 @@
 }
 
 @media (max-width: 1024px) {
+
     /* 메인 컨테이너 */
     #main_typewriter {
         font-size: 60px;
@@ -117,8 +120,7 @@
     .intro_container.blue>.intro_content>figure,
     .intro_container.yellow>.intro_content>figure,
     .intro_container.sky>.intro_content>figure,
-    .intro_container.red>.intro_content>figure
-     {
+    .intro_container.red>.intro_content>figure {
         width: 400px;
         height: calc(400px * 7 / 8);
         background-size: contain;
@@ -180,13 +182,22 @@
     }
 
     /* 캠페인 컨테이너 */
-    .campaign_container {
-        padding: 50px;
+    .campaign_container.donate>figure,
+    .campaign_container.resource>figure {
+        width: 60%;
+        height: 100%;
+        border-radius: 50px;
     }
-    .campaign_container.donate>figure {
-        width: 380px;
-        height: 40vh;
-        background-size: center;
+
+    .campaign_container {
+        padding: 80px 30px;
+        box-sizing: border-box;
+        gap: 28px;
+    }
+
+    .campaign_text_content {
+        padding: 0;
+        width: 40%;
     }
 
     .campaign_top.donate>h2 {
@@ -233,6 +244,7 @@
 }
 
 @media (max-width: 730px) {
+
     /* 소개 컨테이너 */
     .intro_content {
         flex-direction: column-reverse;
@@ -301,9 +313,39 @@
     .show_name {
         display: block;
     }
+
+    /* 캠페인 컨테이너 */
+    .campaign_container.donate>figure,
+    .campaign_container.resource>figure {
+        width: 100%;
+        height: 280%;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .campaign_container {
+        flex-direction: column;
+    }
+
+    .campaign_container.resource {
+        flex-direction: column-reverse;
+    }
+
+    .campaign_text_content {
+        width: 100%;
+    }
+
+    .campaign_top>p {
+        font-size: 28px;
+    }
+
+    .campaign_text_content>p {
+        display: none;
+    }
 }
 
 @media (max-width: 700px) {
+
     /* 메인 컨테이너 */
     #main_typewriter {
         font-size: 40px;
@@ -313,6 +355,11 @@
     .bestseller_content>li>img {
         width: 300px;
         height: 300px;
+    }
+
+    .bestseller_overlay {
+        font-size: 16px;
+        line-height: 26px;
     }
 
     .bestseller_container>h2 {
@@ -329,13 +376,14 @@
     footer {
         height: 250px;
     }
-    
+
     .contact {
         display: none;
     }
 }
 
 @media (max-width: 500px) {
+
     /* 메인 컨테이너 */
     header {
         width: 100%;
@@ -353,7 +401,7 @@
         background-repeat: no-repeat;
         background-position: center center;
     }
-    
+
     /* 추천 컨테이너 */
     .rose_1,
     .rose_2,
@@ -378,10 +426,12 @@
     .address {
         font-size: 14px;
         line-height: 20px;
+        padding: 0 8px;
     }
 }
 
 @media (max-width: 450px) {
+
     /* 소개 컨테이너 */
     .intro_text_content>h3 {
         font-size: 18px;
@@ -390,15 +440,69 @@
 }
 
 @media (max-width: 360px) {
+
+    /* 메인 컨테이너 */
+    #main_typewriter {
+        font-size: 28px;
+        line-height: 40px;
+    }
+
+    .header_menu>li {
+        font-size: 22px;
+        line-height: 44px;
+    }
+
+    .header_menu_button>p {
+        font-size: 22px;
+        margin-left: 12px;
+    }
+
+    /* 소개 컨테이너 */
+    .intro_container {
+        height: 800px;
+    }
+
+    .intro_text_content>h3 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .intro_container>h2 {
+        font-size: 22px;
+        margin-left: 16px;
+    }
+
     /* 추천 컨테이너 */
     .flex_box {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 캠페인 컨테이너 */
+    .campaign_container {
+        height: 600px;
+        padding: 40px 16px;
+    }
+
+    .campaign_top.donate>h2,
+    .campaign_top.resource>h2 {
+        font-size: 16px;
+    }
+
+    .campaign_top>p {
+        font-size: 20px;
     }
 
     /* 베스트셀러 컨테이너 */
     .bestseller_content>li>img {
         width: 200px;
         height: 200px;
+    }
+
+    .bestseller_overlay {
+        font-size: 12px;
+        line-height: 20px;
     }
 
     .bestseller_container>h2 {

@@ -65,6 +65,7 @@ header {
 
 .header_menu_button {
     display: flex;
+    align-items: center;
 }
 
 .ham_container {
@@ -567,6 +568,7 @@ header {
     transform: translateY(40px);
     transition: 1s ease-out, transform 1s ease-out;
     border-radius: 50px 50px 0 0;
+    align-items: center;
 }
 
 .campaign_container.resource {
@@ -680,6 +682,8 @@ header {
     border-radius: 50%;
     opacity: 0;
     transition: 0.7s;
+    text-align: center;
+    line-height: 36px;
 }
 
 .bestseller_content>li:hover .bestseller_overlay {
