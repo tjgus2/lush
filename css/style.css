@@ -229,6 +229,9 @@ header {
     align-items: center;
     border-radius: 24px;
     overflow: hidden;
+    gap: 24px;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
 
 .intro_text_content {
@@ -241,19 +244,6 @@ header {
     width: 50%
 }
 
-.intro_text_content.margin_right {
-    margin-right: 120px;
-}
-
-.intro_text_content.margin_left {
-    margin-left: 120px;
-}
-
-.margin_left {
-    margin-left: 100px;
-    margin-top: 32px;
-}
-
 .intro_text_content>h3 {
     font-size: 32px;
     font-weight: 600;
@@ -264,7 +254,7 @@ header {
     line-height: 20px;
 }
 
-.intro_description {
+.intro_text_content>p:last-of-type {
     display: none;
 }
 

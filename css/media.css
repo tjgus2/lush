@@ -37,18 +37,6 @@
         gap: 100px;
     }
 
-    .intro_text_content.margin_right {
-        margin-right: 80px;
-    }
-
-    .intro_text_content.margin_left {
-        margin-left: 80px;
-    }
-
-    .margin_left {
-        margin-left: 0;
-    }
-
     .intro_text_content>h3 {
         font-size: 20px;
         line-height: 32px;
@@ -141,18 +129,6 @@
         gap: 32px;
     }
 
-    .intro_text_content.margin_right {
-        margin-right: 0;
-    }
-
-    .intro_text_content.margin_left {
-        margin-left: 0;
-    }
-
-    .margin_left {
-        margin-top: 0;
-    }
-
     .intro_text_content {
         gap: 60px;
         height: auto;
@@ -167,6 +143,9 @@
     .intro_text_content>p:last-of-type {
         display: block;
         font-size: 48px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 60px;
     }
 
     /* 추천 컨테이너 */
@@ -282,37 +261,6 @@
 
 @media (max-width: 730px) {
 
-    /* 소개 컨테이너 */
-    .intro_content {
-        flex-direction: column-reverse;
-    }
-
-    .intro_text_content {
-        gap: 0;
-        height: 400px;
-        width: 40%;
-    }
-
-    .intro_text_content>h3 {
-        font-weight: 600;
-    }
-
-    .intro_text_content>p {
-        display: none;
-    }
-
-    /* .intro_text_content.margin_right {
-        margin-right: 0;
-    }
-
-    .intro_text_content.margin_left {
-        margin-left: 0;
-    }
-
-    .margin_left {
-        margin-top: 0;
-    } */
-
     /* 추천 컨테이너 */
     .recommend_container>h2 {
         text-align: center;
@@ -388,6 +336,15 @@
         font-size: 40px;
     }
 
+    /* 소개 컨테이너 */
+    .intro_text_content>p:last-of-type {
+        display: block;
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 48px;
+    }
+
     /* 베스트셀러 컨테이너 */
     .bestseller_content>li>img {
         width: 300px;
@@ -439,6 +396,19 @@
         background-position: center center;
     }
 
+    .intro_container>h2 {
+        font-size: 28px;
+        margin-left: 24px;
+    }
+
+    .intro_container:nth-child(2)::before,
+    .intro_container:nth-child(3)::before,
+    .intro_container:nth-child(4)::before {
+        height: 28px;
+        display: block;
+        content: "";
+    }
+
     /* 추천 컨테이너 */
     .rose_1,
     .rose_2,
@@ -467,15 +437,6 @@
     }
 }
 
-@media (max-width: 450px) {
-
-    /* 소개 컨테이너 */
-    .intro_text_content>h3 {
-        font-size: 18px;
-        line-height: 30px;
-    }
-}
-
 @media (max-width: 360px) {
 
     /* 메인 컨테이너 */
@@ -499,14 +460,25 @@
         height: 800px;
     }
 
-    .intro_text_content>h3 {
-        font-size: 16px;
-        line-height: 24px;
+    .intro_text_content>p:last-of-type {
+        display: block;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 36px;
     }
 
     .intro_container>h2 {
         font-size: 22px;
-        margin-left: 16px;
+        margin-left: 20px;
+    }
+
+    .intro_container:nth-child(2)::before,
+    .intro_container:nth-child(3)::before,
+    .intro_container:nth-child(4)::before {
+        height: 22px;
+        display: block;
+        content: "";
     }
 
     /* 추천 컨테이너 */

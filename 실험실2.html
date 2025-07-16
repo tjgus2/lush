@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campaign Scroll Typing</title>
+  <style>
+    body {
+      background-color: #000;
+      margin: 0;
+    }
+
+    /* 스크롤 잠금 클래스 */
+    body.lock-scroll {
+      overflow: hidden;
+      height: 100%;
+      touch-action: none;
+    }
+
+    .main_container {
+      color: #fff;
+      z-index: 1;
+      width: 100%;
+      height: 400vh;
+      display: flex;
+      flex-direction: column;
+      gap: 400px;
+      box-sizing: border-box;
+    }
+
+    header {
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      justify-content: space-between;
+      z-index: 2;
+      position: relative;
+    }
+
+    .header_menu_button {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .ham_container {
+      padding: 16px 0;
+    }
+
+    .hamburger {
+      width: 40px;
+      height: 3px;
+      background-color: #fff;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .hamburger.active {
+      background-color: transparent;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: "";
+      width: 40px;
+      height: 3px;
+      background-color: #fff;
+      display: block;
+      position: absolute;
+      left: 0;
+      transition: 0.3s;
+    }
+
+    .hamburger::before {
+      top: -10px;
+    }
+
+    .hamburger::after {
+      top: 10px;
+    }
+
+    .hamburger.active::before {
+      transform: rotate(-45deg);
+      top: 0;
+      background-color: #fff;
+    }
+
+    .hamburger.active::after {
+      transform: rotate(45deg);
+      top: 0;
+      background-color: #fff;
+    }
+
+    .header_menu_button>p {
+      font-size: 28px;
+      font-weight: 900;
+      margin-left: 16px;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: 0.5s;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .wrapper.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .header_menu {
+      position: absolute;
+      top: 50%;
+      right: 15%;
+      transform: translateY(-50%);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header_menu>li {
+      line-height: 72px;
+      font-size: 40px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #main_typewriter {
+      font-size: 84px;
+      font-weight: 600;
+      padding: 32px;
+      position: sticky;
+      text-align: center;
+      color: #7e7878;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    #main_typewriter.hidden {
+      opacity: 0;
+    }
+
+    #main_typewriter span {
+      transition: color 0.3s ease;
+      color: #7e7878;
+    }
+
+    #main_typewriter span.active {
+      color: #000;
+    }
+
+    .main_text_content {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="main_container">
+    <header>
+      <h1>
+        <img src="./image/logo.svg" alt="로고" />
+      </h1>
+      <div class="header_menu_button">
+        <div class="ham_container">
+          <div class="hamburger"></div>
+        </div>
+        <p>menu</p>
+      </div>
+    </header>
+    <div class="wrapper">
+      <ul class="header_menu">
+        <li>Hair</li>
+        <li>Face</li>
+        <li>Hand</li>
+        <li>Body</li>
+        <li>location</li>
+      </ul>
+    </div>
+    <div class="main_text_content">
+      <p id="main_typewriter"></p>
+    </div>
+  </section>
+
+  <script>
+    const text =
+      "Lush makes effective, handmade products using fresh, organic ingredients, and is always kind to people, and animals.";
+
+    const container = document.getElementById("main_typewriter");
+
+    // 공백도 포함해서 분리
+    const words = text.split(/(\s+)/);
+
+    words.forEach((word) => {
+      const span = document.createElement("span");
+      span.textContent = word;
+      container.appendChild(span);
+    });
+
+    const spans = container.querySelectorAll("span");
+    const totalWords = spans.length;
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // 스크롤 내릴 때만 업데이트
+        const containerRect = container.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const scrollY = Math.min(
+          Math.max(0, windowHeight - containerRect.top),
+          windowHeight
+        );
+        const scrollRatio = scrollY / windowHeight;
+
+        const activeCount = Math.floor(scrollRatio * totalWords);
+
+        spans.forEach((span, index) => {
+          if (index <= activeCount) {
+            span.classList.add("active");
+          }
+        });
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    const hamburger = document.querySelector(".hamburger");
+    const hamContainer = document.querySelector(".header_menu_button");
+    const headerMenu = document.querySelector(".wrapper");
+    const mainTypewriter = document.querySelector("#main_typewriter");
+
+    let isMenuOpen = false;
+    hamContainer.addEventListener("click", () => {
+      if (!isMenuOpen) {
+        hamburger.classList.add("active");
+        headerMenu.classList.add("active");
+        mainTypewriter.classList.add("hidden");
+        document.body.classList.add("lock-scroll"); // 스크롤 잠금
+      } else {
+        hamburger.classList.remove("active");
+        headerMenu.classList.remove("active");
+        mainTypewriter.classList.remove("hidden");
+        document.body.classList.remove("lock-scroll"); // 스크롤 해제
+      }
+      isMenuOpen = !isMenuOpen;
+    });
+  </script>
+</body>
+
+</html> 처음에 hamContainer를 누르고 메뉴바 보이면 스크롤 막았다가 menubar가 나온 상태에서 hamContainer를 다시 누르면 스크롤이 활성화되어야지 
