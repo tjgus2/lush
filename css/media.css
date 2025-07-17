@@ -33,9 +33,6 @@
         margin-left: 28px;
     }
 
-    .intro_text_content {
-        gap: 100px;
-    }
 
     .intro_text_content>h3 {
         font-size: 20px;
@@ -126,7 +123,6 @@
 
     .intro_content {
         flex-direction: column;
-        gap: 32px;
     }
 
     .intro_text_content {

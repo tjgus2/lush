@@ -1,38 +1,20 @@
-const text = "Lush makes effective, handmade products using fresh, organic ingredients, and is always kind to people, and animals."
+const target = document.getElementById("main_typewriter");
+        const mainContainer = document.querySelector(".main_container");
 
-const container = document.getElementById("main_typewriter");
+        window.addEventListener("scroll", () => {
+            const sectionTop = mainContainer.offsetTop;
+            const sectionHeight = mainContainer.offsetHeight;
+            const scrollY = window.scrollY;
 
-    const words = text.split(/(\s+)/);
+            // 현재 메인 섹션 내에서의 스크롤 거리
+            const distanceScrolled = scrollY - sectionTop;
 
-    words.forEach(word => {
-      const span = document.createElement('span');
-      span.textContent = word;
-      container.appendChild(span);
-    });
+            // 메인 섹션 내 스크롤 비율 (0 ~ 1 사이)
+            const scrollRatio = Math.min(Math.max(distanceScrolled / sectionHeight, 0), 1);
 
-    const spans = container.querySelectorAll('span');
-    const totalWords = spans.length;
+            const acceleratedRatio = Math.min(scrollRatio * 2.0, 1);
 
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY) { // 스크롤 내릴 때만 활성화 업데이트
-        const containerRect = container.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        const scrollY = Math.min(Math.max(0, windowHeight - containerRect.top), windowHeight);
-        const scrollRatio = scrollY / windowHeight;
-
-        const activeCount = Math.floor(scrollRatio * totalWords);
-
-        spans.forEach((span, index) => {
-          if (index <= activeCount) {
-            span.classList.add('active');
-          }
+            // 백분율 계산 후 CSS 변수로 적용
+            const percent = acceleratedRatio * 100;
+            target.style.setProperty('--bg-fill', `${percent}%`);
         });
-      }
-
-      lastScrollY = currentScrollY;
-    });
