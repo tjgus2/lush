@@ -2,6 +2,7 @@
 
     /* 소개 컨테이너 */
     .intro_content {
+        width: 90%;
         height: 60%;
     }
 
@@ -30,7 +31,7 @@
 
     .intro_container>h2 {
         font-size: 32px;
-        margin-left: 28px;
+        margin-left: 86px;
     }
 
 
@@ -187,6 +188,7 @@
 
     .show_button {
         display: block;
+        background-color: #616161;
     }
 
     .recommend_text_content>button {
