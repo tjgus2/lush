@@ -139,9 +139,10 @@
     .intro_text_content>p:last-of-type {
         display: block;
         font-size: 48px;
-        font-weight: 600;
         text-align: center;
         line-height: 60px;
+        font-family: 'Alike', serif;
+        font-weight: 400;
     }
 
     /* 추천 컨테이너 */
@@ -334,10 +335,7 @@
 
     /* 소개 컨테이너 */
     .intro_text_content>p:last-of-type {
-        display: block;
         font-size: 36px;
-        font-weight: 600;
-        text-align: center;
         line-height: 48px;
     }
 
