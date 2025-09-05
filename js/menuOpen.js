@@ -9,12 +9,12 @@ const hamburger = document.querySelector(".hamburger");
         hamburger.classList.add("active");
         headerMenu.classList.add("active");
         mainTypewriter.classList.add("hidden");
-        document.body.classList.add("lock-scroll"); // 스크롤 잠금
+        document.body.classList.add("lock-scroll");
       } else {
         hamburger.classList.remove("active");
         headerMenu.classList.remove("active");
         mainTypewriter.classList.remove("hidden");
-        document.body.classList.remove("lock-scroll"); // 스크롤 해제
+        document.body.classList.remove("lock-scroll");
       }
       isMenuOpen = !isMenuOpen;
     });

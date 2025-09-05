@@ -160,37 +160,36 @@ body.lock-scroll {
     font-weight: 600;
 }
 
-#main_typewriter {
-    font-size: 84px;
-    font-weight: 600;
+.main_text_content {
     position: relative;
-    padding: 0 16px;
-    color: #000;
-    box-sizing: border-box;
 }
 
-#main_typewriter::after {
-    content: attr(data-text);
+#main_typewriter,
+#main_typewriter_hidden {
+    font-size: 84px;
+    font-weight: 600;
+    padding: 0 16px;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0 16px;
-
     width: 100%;
-    height: 120%;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-image: linear-gradient(90deg, #fff 0 0);
-
-    background-repeat: no-repeat;
-    background-size: var(--bg-fill, 0%) 100%;
-
-    pointer-events: none;
+    text-align: center;
 }
 
-#main_typewriter.revealed::after {
-    background-size: 100% 100%;
+#main_typewriter {
+    color: #000;
+}
+
+#main_typewriter_hidden {
+    color: transparent;
+    background-image: linear-gradient(90deg, #fff 0%, #fff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.1s linear;
+    pointer-events: none;
 }
 
 #main_typewriter.hidden {
